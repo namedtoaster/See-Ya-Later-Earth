@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GUI/images/prototype-GUI/Btn01.png" type="Texture" id=1]
+[ext_resource path="res://GUI/images/prototype-GUI/Panel03.png" type="Texture" id=2]
+[ext_resource path="res://GUI/font/bar_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://GUI/themes/default_theme.tres" type="Theme" id=4]
+
+[node name="Bar" type="HBoxContainer"]
+margin_right = 428.0
+margin_bottom = 57.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Percentage" type="TextureProgress" parent="."]
+margin_right = 357.0
+margin_bottom = 57.0
+value = 20.0
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 361.0
+margin_right = 406.0
+margin_bottom = 57.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 6.0
+margin_right = 45.0
+margin_bottom = 26.0
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+text = "Label"
+
+[node name="Value" type="Label" parent="VBoxContainer"]
+margin_left = 25.0
+margin_top = 30.0
+margin_right = 20.0
+margin_bottom = 50.0
+size_flags_horizontal = 0
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+text = "22"
+align = 2
