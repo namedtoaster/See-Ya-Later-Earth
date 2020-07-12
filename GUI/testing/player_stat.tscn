@@ -1,0 +1,99 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/testing/player_movement.gd" type="Script" id=1]
+
+[node name="PlayerValues" type="VBoxContainer"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -25.0
+margin_right = 84.0
+margin_bottom = 25.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 121.0
+margin_bottom = 14.0
+text = "Player Values"
+
+[node name="MoveVectorX" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 121.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="MoveVectorX"]
+margin_right = 101.0
+margin_bottom = 14.0
+text = "move_vector.x: "
+
+[node name="Value" type="Label" parent="MoveVectorX"]
+margin_left = 105.0
+margin_right = 121.0
+margin_bottom = 14.0
+text = "10"
+
+[node name="MoveVectorY" type="HBoxContainer" parent="."]
+margin_top = 36.0
+margin_right = 121.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="MoveVectorY"]
+margin_right = 101.0
+margin_bottom = 14.0
+text = "move_vector.y: "
+
+[node name="Value" type="Label" parent="MoveVectorY"]
+margin_left = 105.0
+margin_right = 121.0
+margin_bottom = 14.0
+text = "10"
+
+[node name="LookVectorX" type="HBoxContainer" parent="."]
+margin_top = 54.0
+margin_right = 121.0
+margin_bottom = 68.0
+
+[node name="Label" type="Label" parent="LookVectorX"]
+margin_right = 92.0
+margin_bottom = 14.0
+text = "look_vector.y: "
+
+[node name="Value" type="Label" parent="LookVectorX"]
+margin_left = 96.0
+margin_right = 112.0
+margin_bottom = 14.0
+text = "10"
+
+[node name="LookVectorY" type="HBoxContainer" parent="."]
+margin_top = 72.0
+margin_right = 121.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="LookVectorY"]
+margin_right = 92.0
+margin_bottom = 14.0
+text = "look_vector.y: "
+
+[node name="Value" type="Label" parent="LookVectorY"]
+margin_left = 96.0
+margin_right = 112.0
+margin_bottom = 14.0
+text = "10"
+
+[node name="State" type="HBoxContainer" parent="."]
+margin_top = 90.0
+margin_right = 121.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="State"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "state: "
+
+[node name="Value" type="Label" parent="State"]
+margin_left = 44.0
+margin_right = 82.0
+margin_bottom = 14.0
+text = "NONE"
