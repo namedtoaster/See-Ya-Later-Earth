@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/space_background.jpg-a5752c6ce0cb97bad2e5d8170eca9674.stex"
+path="res://.import/PRPG_tileset_bridge.png-e2d0246680e0e3659bc4b07c923cc87e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/space_background.jpg"
-dest_files=[ "res://.import/space_background.jpg-a5752c6ce0cb97bad2e5d8170eca9674.stex" ]
+source_file="res://assets/tilesets/PocketRPGTileset/Tiles Buffered/PRPG_tileset_bridge.png"
+dest_files=[ "res://.import/PRPG_tileset_bridge.png-e2d0246680e0e3659bc4b07c923cc87e.stex" ]
 
 [params]
 
