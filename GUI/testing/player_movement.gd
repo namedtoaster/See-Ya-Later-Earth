@@ -11,6 +11,9 @@ func update_look_values(values):
 func update_state(value):
 	$State/Value.text = value
 	
+func update_FPS(value):
+	$FPS/Value.text = value
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -15,3 +15,4 @@ func _process(delta):
 	$GUI/PlayerStats.update_move_values($Player/StateMachine/Move.velocity)
 	$GUI/PlayerStats.update_look_values($Player.look_direction)
 	$GUI/PlayerStats.update_state($Player/StateMachine.current_state.name)
+	$GUI/PlayerStats.update_FPS(str(Performance.get_monitor(Performance.TIME_FPS)))

@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="See Ya Later Earth"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://test level/TestLevel.tscn"
 config/icon="res://icon.png"
 
 [gdnative]

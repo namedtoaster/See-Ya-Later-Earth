@@ -1,6 +1,6 @@
 extends "on_ground.gd"
 
-export(float) var MAX_WALK_SPEED = 150
+export(float) var MAX_WALK_SPEED = 100
 export(float) var MAX_RUN_SPEED = 200
 
 func enter():
