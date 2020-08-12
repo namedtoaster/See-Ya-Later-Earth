@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Characters/Character.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Character",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://Characters/NPC/NPC.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"Character": "",
+"GitAPI": "",
+"NPC": ""
 }
 
 [application]
