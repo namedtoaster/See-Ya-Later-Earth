@@ -1,12 +1,10 @@
-class_name Robot
+class_name NPC
 extends Character
 
-var dialog_text = ["Hey 'der...",
-"*bleep*....*bloop*...",
-"We don't get a lot of...*bloop*...people around here lately.",
-"*bleep* *bloop*...If you want some supplies, there's a shack just Southwest of here.",
-"I'm just going to stay out here and enjoy the sun...*bleep*",
-"*bleep* *bloop*..."]
+var dialog_text = ["Hello, I'm an NPC",
+"Nice to meet you.",
+"This is your quest, don't mess it up.",
+"Don't fail or my family won't eat"]
 
 signal direction_changed(new_direction)
 export(float) var MULTIPLIER = 1.0
