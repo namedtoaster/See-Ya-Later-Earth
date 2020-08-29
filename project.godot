@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://git_api.gdns"
 }, {
-"base": "Reference",
+"base": "Character",
 "class": "NPC",
 "language": "GDScript",
 "path": "res://Characters/Robot/Robot.gd"

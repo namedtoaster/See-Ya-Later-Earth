@@ -5,7 +5,3 @@
 bin/
 build/
 lib/
-
-# Temporary image files
-$*.png
-$*.jpg
