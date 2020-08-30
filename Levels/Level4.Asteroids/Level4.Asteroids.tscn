@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/Level4.Asteroids/Level4.Asteroids.gd" type="Script" id=1]
+[ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=2]
+
+[node name="Level4Asteroids" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+NEXT_SCENE = "res://Levels/Level5.Jupiter/Level5.Jupiter.tscn"
+
+[node name="Ground" parent="Tiles" index="0"]
+visible = false
