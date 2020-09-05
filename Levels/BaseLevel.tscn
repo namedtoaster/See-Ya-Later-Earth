@@ -21,6 +21,7 @@ tile_data = PoolIntArray( 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 
 
 [node name="NPCs" type="CanvasLayer" parent="."]
 layer = -1
+follow_viewport_enable = true
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 55.8464, 98.8039 )
