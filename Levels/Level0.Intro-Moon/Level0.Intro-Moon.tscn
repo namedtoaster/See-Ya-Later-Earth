@@ -45,6 +45,7 @@ tile_data = PoolIntArray( 524303, 0, 0 )
 
 [node name="NPCs" type="CanvasLayer" parent="."]
 layer = -1
+follow_viewport_enable = true
 
 [node name="Robot" parent="NPCs" instance=ExtResource( 4 )]
 position = Vector2( 642.958, 319.331 )
