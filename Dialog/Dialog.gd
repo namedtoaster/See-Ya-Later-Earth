@@ -40,7 +40,7 @@ func _input(_event):
 				set_status(false)
 				
 func _process(delta):
-	var player = get_tree().get_current_scene().get_node("Player")
+	var player = get_tree().get_current_scene().get_node("World/Player")
 	if player.is_on_floor():
 		var current_scene = get_tree().get_current_scene()
 		if current_scene.intro_dialog != null:

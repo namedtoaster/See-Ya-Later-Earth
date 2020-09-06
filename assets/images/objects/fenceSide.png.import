@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spacepack Floor 1_small.png-29b1dc59ef93d92084e5b68ead1b7ffb.stex"
+path="res://.import/fenceSide.png-9f5e1bd89d7f8bea815aec920a229a61.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shared Assets/SpacePack/Spacepack Floor 1_small.png"
-dest_files=[ "res://.import/Spacepack Floor 1_small.png-29b1dc59ef93d92084e5b68ead1b7ffb.stex" ]
+source_file="res://assets/images/objects/fenceSide.png"
+dest_files=[ "res://.import/fenceSide.png-9f5e1bd89d7f8bea815aec920a229a61.stex" ]
 
 [params]
 
