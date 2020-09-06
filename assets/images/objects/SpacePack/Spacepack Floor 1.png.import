@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spacepack 7.png-15735666037be14619343bb3d3fa9c30.stex"
+path="res://.import/Spacepack Floor 1.png-a8e7e1696b2e09ce659041fe38c0a1d3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shared Assets/SpacePack/Spacepack 7.png"
-dest_files=[ "res://.import/Spacepack 7.png-15735666037be14619343bb3d3fa9c30.stex" ]
+source_file="res://assets/images/objects/SpacePack/Spacepack Floor 1.png"
+dest_files=[ "res://.import/Spacepack Floor 1.png-a8e7e1696b2e09ce659041fe38c0a1d3.stex" ]
 
 [params]
 

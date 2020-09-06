@@ -52,7 +52,7 @@ script = ExtResource( 7 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 hframes = 10
-frame = 7
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4.60065 )
@@ -65,6 +65,6 @@ anims/idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogArea"]
 shape = SubResource( 3 )
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Jump" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="DialogArea" to="." method="_on_DialogArea_body_entered"]
