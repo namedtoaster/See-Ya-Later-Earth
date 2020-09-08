@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/images/objects/fenceSide.png" type="Texture" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 64, 64, 0, 64, 0, 42.2441, 64, 41.9092 )
+points = PoolVector2Array( 64, 64, 0, 64, 0, 35.3318, 64, 34.8495 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 19.4174, 0, 18.9352, 64, 0, 64 )
