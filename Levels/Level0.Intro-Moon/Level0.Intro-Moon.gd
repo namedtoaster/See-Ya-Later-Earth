@@ -1,12 +1,10 @@
 extends Node2D
 
-var intro_dialog = null
-#["Welcome to the game",
-#"Do this, do that",
-#"Don't do this, don't do that",
-#"This is how you do this",
-#"This is how you do that",
-#"Good luck"]
+var intro_dialog = ["Um...",
+"It looks like the oxygen level is...",
+"Decreasing!",
+"Gotta find some oxygen...",
+"...and fast!"]
 
 export(String) var NEXT_SCENE
 

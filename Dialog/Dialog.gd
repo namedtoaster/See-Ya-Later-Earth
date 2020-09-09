@@ -41,11 +41,13 @@ func _input(_event):
 				
 func _process(delta):
 	var player = get_tree().get_current_scene().get_node("World/Player")
-	if player.is_on_floor():
-		var current_scene = get_tree().get_current_scene()
-		if current_scene.intro_dialog != null:
-			change_dialog_text(current_scene.intro_dialog)
-		set_process(false)
+	
+	# Uncomment for now - I think I wrote this for the 2d platformer version
+	#if player.is_on_floor():
+	var current_scene = get_tree().get_current_scene()
+	if current_scene.intro_dialog != null:
+		change_dialog_text(current_scene.intro_dialog)
+	set_process(false)
 
 func set_status(value):
 	status = value
@@ -54,13 +56,13 @@ func set_status(value):
 	if (status):
 		# TODO - might not be the best way to do this, might not. But it works for now
 		# Right now, just deactivate the player so he can't move while the dialog is playing
-		var player = get_tree().get_current_scene().get_node("Player")
+		var player = get_tree().get_current_scene().get_node("World/Player")
 		var state_machine = player.get_node("StateMachine")
 		
 		# Make sure the player is idling and not running or anything else
 		state_machine._change_state("idle")
 		# Set the player to inactive so they can't move around
-		state_machine.set_active(false)
+		#state_machine.set_active(false)
 		
 		# Set the text to the beginning of the dialog and hide all characters
 		# and set the page back to 0
@@ -72,11 +74,11 @@ func set_status(value):
 		$Box/Timers/StartDelay.start()
 		
 	if (!status):
-		var player = get_tree().get_current_scene().get_node("Player")
+		var player = get_tree().get_current_scene().get_node("World/Player")
 		var state_machine = player.get_node("StateMachine")
 		state_machine.initialize(state_machine.START_STATE)
 		state_machine._change_state("idle")
-		get_tree().get_current_scene().get_node("Player").get_node("StateMachine").set_active(true)
+		player.get_node("StateMachine").set_active(true)
 		
 		# Fade out - should probably make sure the timer is greater than 1 second so the dialog box doesn't disappear while fading out
 		$AnimationPlayer.play("fade_out")
@@ -113,6 +115,15 @@ func _on_StartDelay_timeout():
 	$AnimationPlayer.play("fade_in")
 	set_process_input(true)
 	$Box/Timers/Timer.start()
+	
+	# Pause the player
+	var player = get_tree().get_current_scene().get_node("World/Player")
+	var state_machine = player.get_node("StateMachine")
+	
+	# Make sure the player is idling and not running or anything else
+	state_machine._change_state("idle")
+	# Set the player to inactive so they can't move around
+	state_machine.set_active(false)
 
 func _on_EndDelay_timeout():
 	self.visible = false

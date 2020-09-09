@@ -4,6 +4,15 @@ extends CanvasLayer
 func change_level(level):
 	$TopLabels/HBoxContainer/Level.text = "Level: " + str(level)
 	
+func _process(delta):
+	# Check if dialog playing i.e. its processing is paused. If it is, pause the progress bar too
+	var dialog_node = get_node("Dialog")
+	var progress = get_node("TopLabels/HBoxContainer/OxygenCounter/TextureProgress")
+	if (dialog_node.is_processing_input()):
+		progress.set_process(false)
+	if (!dialog_node.is_processing_input()):
+		progress.set_process(true)
+	
 func _input(event):
 	pass
 #	if event.is_action_pressed("move_left"):

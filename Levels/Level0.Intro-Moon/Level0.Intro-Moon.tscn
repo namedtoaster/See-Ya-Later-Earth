@@ -51,7 +51,7 @@ position = Vector2( 615.084, 349.269 )
 position = Vector2( 5445.22, 984.175 )
 
 [node name="Player" parent="World" instance=ExtResource( 5 )]
-position = Vector2( 90.1592, 685.585 )
+position = Vector2( 629.778, 627.306 )
 scale = Vector2( 3, 3 )
 
 [node name="Move" parent="World/Player/StateMachine" index="1"]
