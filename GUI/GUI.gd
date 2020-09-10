@@ -12,6 +12,11 @@ func _process(delta):
 		progress.set_process(false)
 	if (!dialog_node.is_processing_input()):
 		progress.set_process(true)
+		
+func increase_oxy(amount):
+	var progress = $TopLabels/HBoxContainer/OxygenCounter/TextureProgress
+	progress.increase_value = true
+	progress.increase_amount = amount
 	
 func _input(event):
 	pass

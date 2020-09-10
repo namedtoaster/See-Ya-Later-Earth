@@ -1,13 +1,22 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Dialog/LevelEnd.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
 
-[sub_resource type="RectangleShape2D" id=1]
+func next_scene(path):
+	print(\"going to next scene\")
+	print(path)
+
+func _on_DialogTestScene_next_scene():
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 92.4031, 113.502 )
 
 [node name="LevelEnd" type="Area2D"]
-script = ExtResource( 1 )
+script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 982.33, 484.005 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
