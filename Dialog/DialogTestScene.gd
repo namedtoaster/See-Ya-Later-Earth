@@ -11,10 +11,13 @@ var intro_dialog = null
 export(String) var NEXT_SCENE
 
 func _ready():
-	$GUI.change_level("1 - Mars")
+	$GUI.change_level("0 - Space Ship")
 	
 	# Every time this node loads in a new scene, dialog needs to process input in order to check if player is on floor
 	$GUI/Dialog.set_process(true)
+	
+	# Turn off oxy
+	$GUI.set_oxy_status(false)
 
 func _on_LevelEnd_body_entered(body):
 	if (body.name == "Player"):
