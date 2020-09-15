@@ -18,6 +18,16 @@ func increase_oxy(amount):
 	progress.increase_value = true
 	progress.increase_amount = amount
 	
+func set_oxy_status(value):
+	$TopLabels/HBoxContainer/OxygenCounter/TextureProgress.decrease = value
+	
+	if value:
+		$TopLabels/HBoxContainer/OxygenCounter/TextureProgress.visible = true
+		$TopLabels/HBoxContainer/OxygenCounter/Label.visible = true
+	else:
+		$TopLabels/HBoxContainer/OxygenCounter/TextureProgress.visible = false
+		$TopLabels/HBoxContainer/OxygenCounter/Label.visible = false
+	
 func _input(event):
 	pass
 #	if event.is_action_pressed("move_left"):

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/$Robot_Suit.png-b2ed6a4bfdb4362b77d0b4f9abafe789.stex"
+path="res://.import/$Robot_Suit.png-d8b503ffb400b5672ba989308c580606.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Robot/assets/$Robot_Suit.png"
-dest_files=[ "res://.import/$Robot_Suit.png-b2ed6a4bfdb4362b77d0b4f9abafe789.stex" ]
+source_file="res://Characters/NPC/Robot/assets/$Robot_Suit.png"
+dest_files=[ "res://.import/$Robot_Suit.png-d8b503ffb400b5672ba989308c580606.stex" ]
 
 [params]
 

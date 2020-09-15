@@ -1,3 +1,4 @@
+class_name Dialog
 extends Node
 
 onready var dialog
@@ -9,6 +10,17 @@ onready var status = false
 
 enum COLOR { RED, BLUE }
 export(COLOR) var DIALOG_COLOR
+
+# Writing here for test, then I'll move to base level class
+#	one var with text
+#		2d var, each index is one person/character
+#			e.g. [["hello, how are you", "my name is robot"], ["hello robot, I'm the main character"]]
+#	one var saying who starts the dialog (probably in an enum or something)
+#		when sent to the dialog class, the color of the dialog box will dependent on who starts
+#		possibility to do more than one character, but maybe it will just override the normal function?
+#
+#		maybe have another var that says how many characters are talking and what color their dialog box should be
+#		at this point it would just make sense to make a class
 
 # Functions
 func _ready():
