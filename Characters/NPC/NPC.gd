@@ -11,10 +11,10 @@ func _ready():
 	# This signal doesn't actually do anything
 	#emit_signal("direction_changed", value)
 
-func _on_DialogArea_body_entered(body):
-	if (body.name == "Player"):
-		var dialog = get_tree().get_current_scene().get_node("GUI").get_node("Dialog")
-		dialog.change_dialog_text(dialog_text)
-		
-		# Deactivate the area for now
-		$DialogArea.visible = false
+#func _on_DialogArea_body_entered(body):
+#	if (body.name == "Player"):
+#		var dialog = get_tree().get_current_scene().get_node("GUI").get_node("Dialog")
+#		dialog.change_dialog_text(dialog_text)
+#
+#		# Deactivate the area for now
+#		$DialogArea.visible = false

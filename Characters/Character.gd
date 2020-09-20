@@ -5,12 +5,11 @@ extends KinematicBody2D
 # such as speed and are affected by gravity.
 
 export var speed = Vector2(0.0, 450.0)
+export(Color) var dialog_color
 onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
 var look_direction = Vector2(1, 0) setget set_look_direction
-
-const FLOOR_NORMAL = Vector2.UP
-
 var _velocity = Vector2.ZERO
+const FLOOR_NORMAL = Vector2.UP
 
 # _physics_process is called after the inherited _physics_process function.
 # This allows the Player and Enemy scenes to be affected by gravity.

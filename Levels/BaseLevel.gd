@@ -7,6 +7,11 @@ var intro_dialog = null
 #"This is how you do this",
 #"This is how you do that",
 #"Good luck"]
+export(Color) var dialog_color
+export(NodePath) var current_dialog_node
+
+var conversation
+# ID of character
 
 export(String) var NEXT_SCENE
 
@@ -18,6 +23,9 @@ func _ready():
 	
 	# Turn off oxy
 	$GUI.set_oxy_status(false)
+	
+	# Enable the first dialog node
+	$Dialogs/DialogArea.set_status(true)
 
 func _on_LevelEnd_body_entered(body):
 	if (body.name == "Player"):

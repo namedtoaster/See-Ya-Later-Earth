@@ -18,6 +18,7 @@ extents = Vector2( 7.98652, 6.25277 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+dialog_color = Color( 0.0509804, 0.458824, 0.247059, 1 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 5 )
