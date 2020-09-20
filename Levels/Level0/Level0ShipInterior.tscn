@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/sci-fi_interior.tres" type="TileSet" id=2]
 [ext_resource path="res://Characters/NPC/Robot/Robot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Dialog/DialogArea/DialogArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level0/Navigation2D.gd" type="Script" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 478.957, 409.764, 164.026, 407.443, 160.157, 190.009, 863.529, 190.783, 543.955, 408.216, 861.981, 413.633, 543.955, 508.003, 478.957, 508.003 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 3, 5, 4 ), PoolIntArray( 0, 4, 6, 7 ) ]
+outlines = [ PoolVector2Array( 160.157, 190.009, 164.026, 407.443, 478.957, 409.764, 478.957, 508.003, 543.955, 508.003, 543.955, 408.216, 861.981, 413.633, 863.529, 190.783 ) ]
 
 [node name="Level0ShipInterior" instance=ExtResource( 1 )]
 dialog_color = Color( 0.356863, 0.0784314, 0.509804, 1 )
@@ -34,12 +41,24 @@ position = Vector2( 207.439, 372.967 )
 limit_right = 1024
 limit_bottom = 600
 
-[node name="DialogArea" parent="Dialogs" index="0"]
-position = Vector2( 509.079, 394.053 )
-scale = Vector2( 3, 3 )
-delay_start = 0.0
-dialog_text = [ [ "Welcome to the moon, Cadet. Why are we stopping?", "Ship's destination is Mars." ], [ "C'mon Bot, we had to make a pit stop for the ultimate travel snack." ], [ "Snacks?" ], [ "Indeed my metal friend!", "And nothing hits the spot during space travel like slim jims and moon cheese.", "It's my Rocket fuel!" ] ]
-dialog_color = [ Color( 0.0901961, 0.109804, 0.396078, 1 ), Color( 0.109804, 0.372549, 0.239216, 1 ), Color( 0.0901961, 0.109804, 0.396078, 1 ), Color( 0.109804, 0.372549, 0.239216, 1 ) ]
-names = [ "Bot", "Jet", "Bot", "Jet" ]
+[node name="DialogArea" parent="Dialogs" index="0" instance=ExtResource( 4 )]
+position = Vector2( 601.123, 383.839 )
+scale = Vector2( 7, 7 )
+dialog_text = [ [ "Welcome to the moon, Cadet.", "Why are we stopping?", "Ship's destination is Mars." ], [ "C'mon Bot, we had to make a pit stop for the ultimate travel snack." ], [ "Snacks?" ], [ "Indeed my metal friend!", "And nothing hits the spot during space travel like slim jims and moon cheese.", "It's my rocket fuel!" ], [ "Humans don't require rocket fuel for survival, Cadet." ], [ "It's rocket fuel for my soul, Bot." ], [ "What evidence has been procured that humans have souls?", "And that soul sustenance is slim jims and moon chee-" ], [ "Shut it!", "What are you, a recycled Feel-bot?", "I refuse to debate philosphy on an empty stomach.", "Onward to my precious sims!" ], [ "Don't forget hel-" ], [ "Hell?!", "Did you not just hear me?!", "No slims, no soul talk!", "Ship, open the side hatch. I always wanted my moon landing to be the hero entrance!", "Like in the old Avengers!" ], [ "But you nee-" ], [ "No butt!", "You're supposed to land on your knee, supposedly less painful.", "Well, here it goes.", "Moon, your hero is her-" ] ]
+dialog_color = [ Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ) ]
+names = [ "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet" ]
+
+[node name="ExitShip" type="Node2D" parent="Other" index="0"]
+
+[node name="Navigation2D" type="Navigation2D" parent="Other/ExitShip" index="0"]
+script = ExtResource( 5 )
+character_speed = 200.0
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Other/ExitShip/Navigation2D" index="0"]
+position = Vector2( 0, 2 )
+navpoly = SubResource( 1 )
+
+[node name="ExitLocation" type="Position2D" parent="Other/ExitShip" index="1"]
+position = Vector2( 511.473, 492.902 )
 
 [editable path="World/Player"]
