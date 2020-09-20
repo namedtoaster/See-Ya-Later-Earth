@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Character.gd"
 }, {
+"base": "Node",
+"class": "Dialog",
+"language": "GDScript",
+"path": "res://Dialog/Dialog.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -22,15 +27,16 @@ _global_script_classes=[ {
 "base": "Character",
 "class": "NPC",
 "language": "GDScript",
-"path": "res://Characters/Robot/Robot.gd"
+"path": "res://Characters/NPC/NPC.gd"
 }, {
-"base": "Character",
+"base": "NPC",
 "class": "Robot",
 "language": "GDScript",
-"path": "res://Characters/NPC/NPC.gd"
+"path": "res://Characters/NPC/Robot/Robot.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
+"Dialog": "",
 "GitAPI": "",
 "NPC": "",
 "Robot": ""
@@ -39,8 +45,13 @@ _global_script_class_icons={
 [application]
 
 config/name="See Ya Later Earth"
-run/main_scene="res://Levels/Level0.Intro-Moon/Level0.Intro-Moon.tscn"
+run/main_scene="res://Levels/Level0/Level0ShipInterior.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gdnative]
 

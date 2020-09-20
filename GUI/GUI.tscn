@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GUI/GUI.gd" type="Script" id=1]
 [ext_resource path="res://Dialog/Dialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/assets/space.png" type="Texture" id=3]
 [ext_resource path="res://GUI/assets/left.png" type="Texture" id=4]
 [ext_resource path="res://GUI/assets/right.png" type="Texture" id=5]
+[ext_resource path="res://GUI/ProgressBar.gd" type="Script" id=6]
+[ext_resource path="res://assets/images/menus/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_11resize.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/menus/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_35.png" type="Texture" id=8]
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -23,23 +26,48 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1014.0
-margin_bottom = 60.0
+margin_bottom = 84.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score" type="Label" parent="TopLabels/HBoxContainer"]
-margin_right = 500.0
-margin_bottom = 50.0
+margin_top = 12.0
+margin_right = 361.0
+margin_bottom = 62.0
 rect_min_size = Vector2( 100, 50 )
 size_flags_horizontal = 3
 text = "Score: 00000"
 
+[node name="OxygenCounter" type="VBoxContainer" parent="TopLabels/HBoxContainer"]
+margin_left = 365.0
+margin_right = 638.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TopLabels/HBoxContainer/OxygenCounter"]
+margin_right = 273.0
+margin_bottom = 14.0
+text = "Oxygen Remaining"
+align = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="TopLabels/HBoxContainer/OxygenCounter"]
+margin_top = 18.0
+margin_right = 273.0
+margin_bottom = 74.0
+value = 30.0
+texture_over = ExtResource( 8 )
+texture_progress = ExtResource( 7 )
+script = ExtResource( 6 )
+
 [node name="Level" type="Label" parent="TopLabels/HBoxContainer"]
-margin_left = 504.0
+margin_left = 642.0
+margin_top = 12.0
 margin_right = 1004.0
-margin_bottom = 50.0
+margin_bottom = 62.0
 rect_min_size = Vector2( 100, 50 )
 size_flags_horizontal = 3
 text = "Level 0"
