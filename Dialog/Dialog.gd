@@ -7,6 +7,7 @@ var dialog_color
 var dialog_names
 var dialog_index = 0
 var calling_node
+var activate_player
 
 # These variables will always be here and will just load whenever the node is loaded
 onready var page = 0
@@ -33,7 +34,7 @@ func _ready():
 	set_process_input(false)
 
 func _input(_event):
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") or Input.is_action_just_pressed("jump"):
 		if text.get_visible_characters() > text.get_total_character_count():
 			if page < dialog.size()-1:
 				page += 1
@@ -90,11 +91,12 @@ func set_status(value):
 		$Box/Timers/StartDelay.start()
 		
 	if (!status):
-		var player = get_tree().get_current_scene().get_node("World/Player")
-		var state_machine = player.get_node("StateMachine")
-		state_machine.initialize(state_machine.START_STATE)
-		state_machine._change_state("idle")
-		player.get_node("StateMachine").set_active(true)
+		if activate_player:
+			var player = get_tree().get_current_scene().get_node("World/Player")
+			var state_machine = player.get_node("StateMachine")
+			state_machine.initialize(state_machine.START_STATE)
+			state_machine._change_state("idle")
+			player.get_node("StateMachine").set_active(true)
 		
 		# Fade out - should probably make sure the timer is greater than 1 second so the dialog box doesn't disappear while fading out
 		$AnimationPlayer.play("fade_out")
@@ -110,15 +112,23 @@ func set_status(value):
 
 # It's assumed that every time you change the dialog text, you wish to show the dialog
 # So after the text is updated, set the status to true
-func change_dialog_text(path):		
-	
+func change_dialog_text(path):
+	# Set the calling dialog's path
 	calling_node = get_node(path)
 	
+	# Set the delay for showing the ialog
 	$Box/Timers/StartDelay.wait_time = max(0.001, calling_node.delay_start)
+	
+	# Run any "on_enter" functions for the dialogs in the scene
+	var current_scene = get_tree().get_current_scene()
+	current_scene._on_dialog_enter()
+	
+	# Set all other dialog properties
 	dialog = calling_node.dialog_text[0]
 	dialog_array = calling_node.dialog_text
 	dialog_color = calling_node.dialog_color
 	dialog_names = calling_node.names
+	activate_player = calling_node.activate_player
 	
 	$Box/DialogColor.color = dialog_color[0]
 	$Name.text = dialog_names[0]
@@ -143,5 +153,5 @@ func _on_StartDelay_timeout():
 	$Box/Timers/Timer.start()
 
 func _on_EndDelay_timeout():
-	self.visible = false
-	calling_node.leave_ship()
+	var current_scene = get_tree().get_current_scene()
+	current_scene._on_dialog_exit_after_fade()

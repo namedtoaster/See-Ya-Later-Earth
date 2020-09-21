@@ -9,6 +9,7 @@ script = ExtResource( 1 )
 dialog_text = [ [ "test", "1", "2", "3" ], [ "this", "is", "test" ] ]
 dialog_color = [ Color( 0, 0, 0, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ) ]
 names = [ "Player", "Robot" ]
+activate_player = false
 
 [node name="Area2D" type="Area2D" parent="."]
 

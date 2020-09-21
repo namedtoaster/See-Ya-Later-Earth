@@ -34,6 +34,7 @@ tracks/0/keys = {
 }
 
 [node name="Dialog" type="HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

@@ -1,29 +1,28 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/tilesets/sci-fi_interior.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/tilesets/sci-fi_interior.tres" type="TileSet" id=1]
+[ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/NPC/Robot/Robot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dialog/DialogArea/DialogArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/Level0/Navigation2D.gd" type="Script" id=5]
+[ext_resource path="res://Levels/Level0/Ship/Level0ShipInterior.gd" type="Script" id=5]
+[ext_resource path="res://Levels/Level0/Ship/Navigation2D.gd" type="Script" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 478.957, 409.764, 164.026, 407.443, 160.157, 190.009, 863.529, 190.783, 543.955, 408.216, 861.981, 413.633, 543.955, 508.003, 478.957, 508.003 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 3, 5, 4 ), PoolIntArray( 0, 4, 6, 7 ) ]
-outlines = [ PoolVector2Array( 160.157, 190.009, 164.026, 407.443, 478.957, 409.764, 478.957, 508.003, 543.955, 508.003, 543.955, 408.216, 861.981, 413.633, 863.529, 190.783 ) ]
+vertices = PoolVector2Array( 539.998, 413.739, 539.998, 505.319, 486.314, 504.266, 486.314, 413.739, 164.206, 410.581, 162.055, 225.317, 862.06, 230.58, 860, 413.739 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 4, 5, 6, 0 ), PoolIntArray( 0, 6, 7 ) ]
+outlines = [ PoolVector2Array( 162.055, 225.317, 164.206, 410.581, 486.314, 413.739, 486.314, 504.266, 539.998, 505.319, 539.998, 413.739, 860, 413.739, 862.06, 230.58 ) ]
 
-[node name="Level0ShipInterior" instance=ExtResource( 1 )]
-dialog_color = Color( 0.356863, 0.0784314, 0.509804, 1 )
-current_dialog_node = NodePath("Dialogs/DialogArea")
-
-[node name="Tiles" parent="." index="0"]
-follow_viewport_enable = true
+[node name="Level0ShipInterior" instance=ExtResource( 2 )]
+script = ExtResource( 5 )
+NEXT_SCENE = "res://Levels/Level0/Level0.Intro-Moon.tscn"
+level_name = "0 - Space Ship"
 
 [node name="Ground" parent="Tiles" index="0"]
 visible = false
 
 [node name="Ship" type="TileMap" parent="Tiles" index="1"]
 scale = Vector2( 2, 2 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 0, 7, 0, 1, 7, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 9, 7, 0, 10, 7, 0, 11, 7, 0, 12, 7, 0, 13, 7, 0, 14, 7, 0, 15, 7, 0, 65536, 7, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 7, 0, 65542, 7, 0, 65543, 7, 0, 65544, 7, 0, 65545, 7, 0, 65546, 7, 0, 65547, 7, 0, 65548, 7, 0, 65549, 7, 0, 65550, 7, 0, 65551, 7, 0, 131072, 7, 0, 131073, 7, 0, 131074, 42, 0, 131075, 44, 0, 131076, 43, 0, 131077, 44, 0, 131078, 43, 0, 131079, 43, 0, 131080, 44, 0, 131081, 42, 0, 131082, 43, 0, 131083, 44, 0, 131084, 43, 0, 131085, 42, 0, 131086, 7, 0, 131087, 7, 0, 196608, 7, 0, 196609, 7, 0, 196610, 47, 0, 196611, 48, 0, 196612, 48, 0, 196613, 48, 0, 196614, 48, 0, 196615, 48, 0, 196616, 48, 0, 196617, 48, 0, 196618, 48, 0, 196619, 48, 0, 196620, 48, 0, 196621, 49, 0, 196622, 7, 0, 196623, 7, 0, 262144, 7, 0, 262145, 7, 0, 262146, 61, 0, 262147, 13, 0, 262148, 13, 0, 262149, 13, 0, 262150, 60, 0, 262151, 60, 0, 262152, 60, 0, 262153, 60, 0, 262154, 13, 0, 262155, 13, 0, 262156, 13, 0, 262157, 59, 0, 262158, 7, 0, 262159, 7, 0, 327680, 7, 0, 327681, 7, 0, 327682, 61, 0, 327683, 13, 0, 327684, 13, 0, 327685, 13, 0, 327686, 60, 0, 327687, 60, 0, 327688, 60, 0, 327689, 60, 0, 327690, 13, 0, 327691, 13, 0, 327692, 13, 0, 327693, 59, 0, 327694, 7, 0, 327695, 7, 0, 393216, 7, 0, 393217, 7, 0, 393218, 72, 0, 393219, 73, 0, 393220, 73, 0, 393221, 73, 0, 393222, 73, 0, 393223, 75, 0, 393224, 75, 0, 393225, 73, 0, 393226, 73, 0, 393227, 73, 0, 393228, 73, 0, 393229, 74, 0, 393230, 7, 0, 393231, 7, 0, 458752, 7, 0, 458753, 7, 0, 458754, 7, 0, 458755, 7, 0, 458756, 7, 0, 458757, 7, 0, 458758, 7, 0, 458759, 1, 0, 458760, 1, 0, 458761, 7, 0, 458762, 7, 0, 458763, 7, 0, 458764, 7, 0, 458765, 7, 0, 458766, 7, 0, 458767, 7, 0, 524288, 7, 0, 524289, 7, 0, 524290, 7, 0, 524291, 7, 0, 524292, 7, 0, 524293, 7, 0, 524294, 7, 0, 524295, 7, 0, 524296, 7, 0, 524297, 7, 0, 524298, 7, 0, 524299, 7, 0, 524300, 7, 0, 524301, 7, 0, 524302, 7, 0, 524303, 7, 0, 589824, 7, 0, 589825, 7, 0, 589826, 7, 0, 589827, 7, 0, 589828, 7, 0, 589829, 7, 0, 589830, 7, 0, 589831, 7, 0, 589832, 7, 0, 589833, 7, 0, 589834, 7, 0, 589835, 7, 0, 589836, 7, 0, 589837, 7, 0, 589838, 7, 0, 589839, 7, 0 )
@@ -41,7 +40,7 @@ position = Vector2( 207.439, 372.967 )
 limit_right = 1024
 limit_bottom = 600
 
-[node name="DialogArea" parent="Dialogs" index="0" instance=ExtResource( 4 )]
+[node name="ShipInterior" parent="Dialogs" index="0" instance=ExtResource( 4 )]
 position = Vector2( 601.123, 383.839 )
 scale = Vector2( 7, 7 )
 dialog_text = [ [ "Welcome to the moon, Cadet.", "Why are we stopping?", "Ship's destination is Mars." ], [ "C'mon Bot, we had to make a pit stop for the ultimate travel snack." ], [ "Snacks?" ], [ "Indeed my metal friend!", "And nothing hits the spot during space travel like slim jims and moon cheese.", "It's my rocket fuel!" ], [ "Humans don't require rocket fuel for survival, Cadet." ], [ "It's rocket fuel for my soul, Bot." ], [ "What evidence has been procured that humans have souls?", "And that soul sustenance is slim jims and moon chee-" ], [ "Shut it!", "What are you, a recycled Feel-bot?", "I refuse to debate philosphy on an empty stomach.", "Onward to my precious sims!" ], [ "Don't forget hel-" ], [ "Hell?!", "Did you not just hear me?!", "No slims, no soul talk!", "Ship, open the side hatch. I always wanted my moon landing to be the hero entrance!", "Like in the old Avengers!" ], [ "But you nee-" ], [ "No butt!", "You're supposed to land on your knee, supposedly less painful.", "Well, here it goes.", "Moon, your hero is her-" ] ]
@@ -51,7 +50,7 @@ names = [ "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", 
 [node name="ExitShip" type="Node2D" parent="Other" index="0"]
 
 [node name="Navigation2D" type="Navigation2D" parent="Other/ExitShip" index="0"]
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 character_speed = 200.0
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Other/ExitShip/Navigation2D" index="0"]

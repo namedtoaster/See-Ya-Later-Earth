@@ -12,6 +12,7 @@ NEXT_SCENE = "res://Dialog/DialogTestScene2.tscn"
 
 [node name="Tiles" type="CanvasLayer" parent="."]
 layer = -1
+follow_viewport_enable = true
 
 [node name="Ground" type="TileMap" parent="Tiles"]
 tile_set = ExtResource( 2 )

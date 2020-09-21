@@ -29,4 +29,3 @@ func take_damage(attacker, amount, effect=null):
 func set_dead(value):
 	set_process_input(not value)
 	set_physics_process(not value)
-	$CollisionPolygon2D.disabled = value
