@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/NPC/NPC.gd"
 }, {
+"base": "TextureProgress",
+"class": "OxyDepletion",
+"language": "GDScript",
+"path": "res://GUI/ProgressBar.gd"
+}, {
 "base": "NPC",
 "class": "Robot",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_class_icons={
 "Dialog": "",
 "GitAPI": "",
 "NPC": "",
+"OxyDepletion": "",
 "Robot": ""
 }
 
@@ -53,6 +59,10 @@ _global_script_class_icons={
 config/name="See Ya Later Earth"
 run/main_scene="res://Levels/Level0/Moon/Level0Intro-Moon.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://Globals/Globals.gd"
 
 [display]
 

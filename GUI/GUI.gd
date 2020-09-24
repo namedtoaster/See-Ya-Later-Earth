@@ -1,6 +1,5 @@
 extends CanvasLayer
-
-
+	
 func change_level(level):
 	$TopLabels/HBoxContainer/Level.text = "Level: " + str(level)
 	
@@ -27,6 +26,9 @@ func set_oxy_status(value):
 	else:
 		$TopLabels/HBoxContainer/OxygenCounter/TextureProgress.visible = false
 		$TopLabels/HBoxContainer/OxygenCounter/Label.visible = false
+		
+func set_oxy_rate(rate):
+	$TopLabels/HBoxContainer/OxygenCounter/TextureProgress.BAR_SPEED = rate
 	
 func _input(event):
 	pass
@@ -44,3 +46,18 @@ func _input(event):
 #		$BottomMenu/VBoxContainer2/Keys/Spacebar.modulate = Color(1, 1, 1, 1)
 #	else:
 #		$BottomMenu/VBoxContainer2/Keys/Spacebar.modulate = Color(1, 1, 1, 0)
+
+
+func _on_TextureProgress_value_changed(value):
+	if value <= 0.0:
+		$AnimationPlayer.play("death_fade_in")
+		
+		var player = get_tree().get_current_scene().get_node("World/Player")
+		player.set_dead(true)
+		
+		$Timers/RestartTimer.start()
+
+
+func _on_RestartTimer_timeout():
+	var current_level = get_tree().get_current_scene()
+	current_level.go_to_scene(current_level.RESTART_SCENE)

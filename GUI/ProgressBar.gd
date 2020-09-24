@@ -1,6 +1,7 @@
+class_name OxyDepletion
 extends TextureProgress
 
-const BAR_SPEED = 2
+var BAR_SPEED = 2
 onready var current_bar_value = 100
 var increase_value = false
 var increase_amount = 0
