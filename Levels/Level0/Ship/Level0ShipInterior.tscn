@@ -14,7 +14,7 @@ outlines = [ PoolVector2Array( 162.055, 225.317, 164.206, 410.581, 486.314, 413.
 
 [node name="Level0ShipInterior" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
-NEXT_SCENE = "res://Levels/Level0/Level0.Intro-Moon.tscn"
+NEXT_SCENE = "res://Levels/Level0/Moon/Level0Intro-Moon.tscn"
 level_name = "0 - Space Ship"
 
 [node name="Ground" parent="Tiles" index="0"]
@@ -47,6 +47,16 @@ dialog_text = [ [ "Welcome to the moon, Cadet.", "Why are we stopping?", "Ship's
 dialog_color = [ Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ) ]
 names = [ "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet" ]
 
+[node name="FirstAttempt" parent="Dialogs" index="2" instance=ExtResource( 4 )]
+position = Vector2( 234.905, 393.354 )
+delay_start = 1.0
+dialog_text = [ [ "Oh, you were trying to tell me to put a helmet on...", "..." ], [ ".." ], [ "Anyway...", "Let's never speak of that ever again...", "...", "...onward!" ] ]
+dialog_color = [ Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ) ]
+names = [ "Jet", "Bot", "Jet" ]
+
+[node name="CollisionShape2D" parent="Dialogs/FirstAttempt/Area2D" index="0"]
+disabled = true
+
 [node name="ExitShip" type="Node2D" parent="Other" index="0"]
 
 [node name="Navigation2D" type="Navigation2D" parent="Other/ExitShip" index="0"]
@@ -60,4 +70,12 @@ navpoly = SubResource( 1 )
 [node name="ExitLocation" type="Position2D" parent="Other/ExitShip" index="1"]
 position = Vector2( 511.473, 492.902 )
 
+[node name="LevelEnd" parent="." index="5"]
+position = Vector2( -474.62, 77.4163 )
+
+[node name="Area" parent="LevelEnd" index="0"]
+position = Vector2( 4.12823, 47.5678 )
+
 [editable path="World/Player"]
+
+[editable path="Dialogs/FirstAttempt"]

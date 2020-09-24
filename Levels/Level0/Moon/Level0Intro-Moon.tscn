@@ -10,7 +10,7 @@
 
 [node name="Level0Intro-Moon" instance=ExtResource( 2 )]
 script = ExtResource( 6 )
-NEXT_SCENE = ""
+RESTART_SCENE = "res://Levels/Level0/Ship/Level0ShipInterior.tscn"
 level_name = "0 - Moon"
 oxy_status = true
 oxy_depletion_rate = 40
@@ -90,4 +90,3 @@ delay_start = 2.0
 dialog_text = [ [ "Oops...", "...", "Forgot my helmet..." ] ]
 dialog_color = [ Color( 0.541176, 0.309804, 0.309804, 1 ) ]
 names = [ "Jet" ]
-activate_player = true

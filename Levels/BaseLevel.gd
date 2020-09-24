@@ -3,6 +3,8 @@
 class_name BaseLevel
 extends Node2D
 
+const DEFAULT_OXY_RATE = 2
+
 var intro_dialog = null
 #["Welcome to the game",
 #"Do this, do that",
@@ -17,7 +19,7 @@ export(String) var NEXT_SCENE
 export(String) var RESTART_SCENE
 export(String) var level_name
 export(bool) var oxy_status
-export(int) var oxy_depletion_rate = 2
+export(int) var oxy_depletion_rate = DEFAULT_OXY_RATE
 
 func _ready():
 	$GUI.change_level(level_name)
@@ -25,14 +27,21 @@ func _ready():
 	# Every time this node loads in a new scene, dialog needs to process input in order to check if player is on floor
 	$GUI/Dialog.set_process(true)
 	
-	# Turn off oxy
+	# Turn on/off oxy
 	$GUI.set_oxy_status(oxy_status)
 	
+	# Set oxy rate
 	$GUI.set_oxy_rate(oxy_depletion_rate)
+	
+	# Fade level in
+	$GUI/AnimationPlayer.play("level_fade_in")
 
 func _on_LevelEnd_body_entered(body):
 	if (body.name == "Player"):
-		go_to_scene(NEXT_SCENE)
+		$LevelEnd/Timer.start()
+		
+func _on_Timer_timeout():
+	$GUI/AnimationPlayer.play("level_fade_out")
 		
 func go_to_scene(SCENE):
 	assert(get_tree().change_scene(SCENE) == OK)

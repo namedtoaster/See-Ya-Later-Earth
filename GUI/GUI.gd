@@ -61,3 +61,9 @@ func _on_TextureProgress_value_changed(value):
 func _on_RestartTimer_timeout():
 	var current_level = get_tree().get_current_scene()
 	current_level.go_to_scene(current_level.RESTART_SCENE)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "level_fade_out":
+		var current_level = get_tree().get_current_scene()
+		current_level.go_to_scene(current_level.NEXT_SCENE)
