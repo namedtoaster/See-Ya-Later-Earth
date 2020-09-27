@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Dialog",
 "language": "GDScript",
-"path": "res://Dialog/Dialog.gd"
+"path": "res://GUI/Dialog/Dialog.gd"
 }, {
 "base": "",
 "class": "GitAPI",

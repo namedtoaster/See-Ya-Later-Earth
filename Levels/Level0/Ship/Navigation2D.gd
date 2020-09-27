@@ -4,22 +4,13 @@ export(float) var character_speed = 400.0
 var path = []
 
 onready var character = get_tree().get_current_scene().get_node("World/Player")
-onready var exit_position = get_tree().get_current_scene().get_node("Other/ExitShip/ExitLocation")
 
 func _process(delta):
 	var walk_distance = character_speed * delta
 	move_along_path(walk_distance)
 
-
-# The "click" event is a custom input action defined in
-# Project > Project Settings > Input Map tab.
-#func _unhandled_input(event):
-#	if not event.is_action_pressed("click"):
-#		return
-#	_update_navigation_path(character.position, exit_position.position)
-
-func begin():
-	_update_navigation_path(character.position, exit_position.position)
+func begin(exit_position):
+	_update_navigation_path(character.position, exit_position)
 
 func move_along_path(distance):
 	var last_point = character.position

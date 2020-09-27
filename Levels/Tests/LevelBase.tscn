@@ -3,7 +3,10 @@
 [ext_resource path="res://Levels/BaseLevel.gd" type="Script" id=1]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Dialog/LevelEnd.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Other/SceneChange/SceneChange.tscn" type="PackedScene" id=4]
+
+
+
 
 
 

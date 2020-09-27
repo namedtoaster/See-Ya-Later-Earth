@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://GUI/GUI.gd" type="Script" id=1]
-[ext_resource path="res://Dialog/Dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Dialog/Dialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/assets/space.png" type="Texture" id=3]
 [ext_resource path="res://GUI/assets/left.png" type="Texture" id=4]
 [ext_resource path="res://GUI/assets/right.png" type="Texture" id=5]
@@ -102,6 +102,7 @@ text = "Oxygen Remaining"
 align = 1
 
 [node name="TextureProgress" type="TextureProgress" parent="TopLabels/HBoxContainer/OxygenCounter"]
+pause_mode = 1
 margin_top = 18.0
 margin_right = 273.0
 margin_bottom = 74.0
@@ -265,9 +266,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

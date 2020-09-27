@@ -1,20 +1,23 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/tilesets/sci-fi_interior.tres" type="TileSet" id=1]
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/NPC/Robot/Robot.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Dialog/DialogArea/DialogArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/Dialog/DialogArea/DialogArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Level0/Ship/Level0ShipInterior.gd" type="Script" id=5]
 [ext_resource path="res://Levels/Level0/Ship/Navigation2D.gd" type="Script" id=6]
+[ext_resource path="res://GUI/Dialog/DialogArea/DialogArea.gd" type="Script" id=7]
 
-[sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 539.998, 413.739, 539.998, 505.319, 486.314, 504.266, 486.314, 413.739, 164.206, 410.581, 162.055, 225.317, 862.06, 230.58, 860, 413.739 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 4, 5, 6, 0 ), PoolIntArray( 0, 6, 7 ) ]
-outlines = [ PoolVector2Array( 162.055, 225.317, 164.206, 410.581, 486.314, 413.739, 486.314, 504.266, 539.998, 505.319, 539.998, 413.739, 860, 413.739, 862.06, 230.58 ) ]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 58.7733, 58.6806 )
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 475.685, 413, 165.158, 414.053, 162.132, 225.013, 865.174, 228.89, 545.159, 411.948, 538.843, 542.474, 475.685, 543.527, 860.949, 417.211 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 0, 4 ), PoolIntArray( 4, 3, 7 ) ]
+outlines = [ PoolVector2Array( 865.174, 228.89, 860.949, 417.211, 545.159, 411.948, 538.843, 542.474, 475.685, 543.527, 475.685, 413, 165.158, 414.053, 162.132, 225.013 ) ]
 
 [node name="Level0ShipInterior" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
-NEXT_SCENE = "res://Levels/Level0/Moon/Level0Intro-Moon.tscn"
 level_name = "0 - Space Ship"
 
 [node name="Ground" parent="Tiles" index="0"]
@@ -40,22 +43,38 @@ position = Vector2( 207.439, 372.967 )
 limit_right = 1024
 limit_bottom = 600
 
-[node name="ShipInterior" parent="Dialogs" index="0" instance=ExtResource( 4 )]
-position = Vector2( 601.123, 383.839 )
-scale = Vector2( 7, 7 )
-dialog_text = [ [ "Welcome to the moon, Cadet.", "Why are we stopping?", "Ship's destination is Mars." ], [ "C'mon Bot, we had to make a pit stop for the ultimate travel snack." ], [ "Snacks?" ], [ "Indeed my metal friend!", "And nothing hits the spot during space travel like slim jims and moon cheese.", "It's my rocket fuel!" ], [ "Humans don't require rocket fuel for survival, Cadet." ], [ "It's rocket fuel for my soul, Bot." ], [ "What evidence has been procured that humans have souls?", "And that soul sustenance is slim jims and moon chee-" ], [ "Shut it!", "What are you, a recycled Feel-bot?", "I refuse to debate philosphy on an empty stomach.", "Onward to my precious sims!" ], [ "Don't forget hel-" ], [ "Hell?!", "Did you not just hear me?!", "No slims, no soul talk!", "Ship, open the side hatch. I always wanted my moon landing to be the hero entrance!", "Like in the old Avengers!" ], [ "But you nee-" ], [ "No butt!", "You're supposed to land on your knee, supposedly less painful.", "Well, here it goes.", "Moon, your hero is her-" ] ]
+[node name="ShipInteriorReal" parent="Dialogs" index="0" instance=ExtResource( 4 )]
+position = Vector2( -146.528, 380.989 )
+dialog_text = [ [ "Welcome to the moon, Cadet.", "Why are we stopping?", "Ship's destination is Mars." ], [ "C'mon Bot, we had to make a pit stop for the ultimate travel snack." ], [ "Snacks?" ], [ "Indeed my metal friend!", "And nothing hits the spot during space travel like slim jims and moon cheese.", "It's my rocket fuel!" ], [ "Humans don't require rocket fuel for survival, Cadet." ], [ "It's rocket fuel for my soul, Bot." ], [ "What evidence has been procured that humans have souls?", "And that soul sustenance is slim jims and moon chee-" ], [ "Shut it!", "What are you, a recycled Feel-bot?", "I refuse to debate philosphy on an empty stomach.", "Onward to my precious slims!" ], [ "Don't forget hel-" ], [ "Hell?!", "Did you not just hear me?!", "No slims, no soul talk!", "Ship, open the side hatch. I always wanted my moon landing to be the hero entrance!", "Like in the old Avengers!" ], [ "But you nee-" ], [ "No butt!", "You're supposed to land on your knee, supposedly less painful.", "Well, here it goes.", "Moon, your hero is her-" ] ]
 dialog_color = [ Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ) ]
 names = [ "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet", "Bot", "Jet" ]
+
+[node name="ShipInterior" type="Node2D" parent="Dialogs" index="1"]
+position = Vector2( 601.123, 383.839 )
+script = ExtResource( 7 )
+dialog_text = [ [ "test" ] ]
+dialog_color = [ Color( 0.247059, 0.215686, 0.403922, 1 ) ]
+names = [ "Bot" ]
+activate_player = false
+
+[node name="Area2D" type="Area2D" parent="Dialogs/ShipInterior" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/ShipInterior/Area2D" index="0"]
+shape = SubResource( 1 )
 
 [node name="FirstAttempt" parent="Dialogs" index="2" instance=ExtResource( 4 )]
 position = Vector2( 234.905, 393.354 )
 delay_start = 1.0
-dialog_text = [ [ "Oh, you were trying to tell me to put a helmet on...", "..." ], [ ".." ], [ "Anyway...", "Let's never speak of that ever again...", "...", "...onward!" ] ]
+dialog_text = [ [ "Oh, you were trying to tell me to put a helmet on...", "..." ], [ "..." ], [ "Anyway...", "Let's never speak of that ever again...", "...", "...onward!" ] ]
 dialog_color = [ Color( 0.541176, 0.309804, 0.309804, 1 ), Color( 0.247059, 0.215686, 0.403922, 1 ), Color( 0.541176, 0.309804, 0.309804, 1 ) ]
 names = [ "Jet", "Bot", "Jet" ]
 
 [node name="CollisionShape2D" parent="Dialogs/FirstAttempt/Area2D" index="0"]
 disabled = true
+
+[node name="LevelEnd" parent="SceneChanges" index="0"]
+position = Vector2( 514.787, 501.304 )
+NEXT_SCENE = "res://Levels/Level0/Moon/Level0Intro-Moon.tscn"
 
 [node name="ExitShip" type="Node2D" parent="Other" index="0"]
 
@@ -64,17 +83,11 @@ script = ExtResource( 6 )
 character_speed = 200.0
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Other/ExitShip/Navigation2D" index="0"]
-position = Vector2( 0, 2 )
-navpoly = SubResource( 1 )
+navpoly = SubResource( 2 )
 
 [node name="ExitLocation" type="Position2D" parent="Other/ExitShip" index="1"]
-position = Vector2( 511.473, 492.902 )
-
-[node name="LevelEnd" parent="." index="5"]
-position = Vector2( -474.62, 77.4163 )
-
-[node name="Area" parent="LevelEnd" index="0"]
-position = Vector2( 4.12823, 47.5678 )
+position = Vector2( 514.358, 501.82 )
+[connection signal="body_entered" from="Dialogs/ShipInterior/Area2D" to="Dialogs/ShipInterior" method="_on_Area2D_body_entered"]
 
 [editable path="World/Player"]
 

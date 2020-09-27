@@ -1,4 +1,12 @@
 extends CanvasLayer
+
+var current_scene_change_node
+
+func _ready():
+	$ColorRect.visible = true
+
+func update_scene_node(path):
+	current_scene_change_node = get_node(path)
 	
 func change_level(level):
 	$TopLabels/HBoxContainer/Level.text = "Level: " + str(level)
@@ -30,6 +38,12 @@ func set_oxy_status(value):
 func set_oxy_rate(rate):
 	$TopLabels/HBoxContainer/OxygenCounter/TextureProgress.BAR_SPEED = rate
 	
+func update_change_node(path):
+	current_scene_change_node = get_node(path)
+	
+func go_to_scene(SCENE):
+	assert(get_tree().change_scene(SCENE) == OK)
+	
 func _input(event):
 	pass
 #	if event.is_action_pressed("move_left"):
@@ -60,10 +74,9 @@ func _on_TextureProgress_value_changed(value):
 
 func _on_RestartTimer_timeout():
 	var current_level = get_tree().get_current_scene()
-	current_level.go_to_scene(current_level.RESTART_SCENE)
+	go_to_scene(current_level.RESTART_SCENE)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "level_fade_out":
-		var current_level = get_tree().get_current_scene()
-		current_level.go_to_scene(current_level.NEXT_SCENE)
+		go_to_scene(current_scene_change_node.NEXT_SCENE)

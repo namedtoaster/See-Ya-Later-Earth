@@ -1,14 +1,23 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/scenes/objects/Oxy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/scenes/objects/Spaceship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Other/Objects/Oxy/Oxy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Buildings & Structures/Spaceship/Spaceship.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/scenes/objects/Building.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Dialog/LevelEnd.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Buildings & Structures/Building/Building.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Other/SceneChange/SceneChange.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/tilesets/planet_ground.tres" type="TileSet" id=7]
 [ext_resource path="res://assets/tilesets/objects.tres" type="TileSet" id=8]
 [ext_resource path="res://Levels/Level0/Moon/archive/Level0.Intro-Moon.gd" type="Script" id=9]
+
+
+
+
+
+
+
+
+
 
 
 
