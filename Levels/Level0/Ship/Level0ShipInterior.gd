@@ -4,15 +4,7 @@ export(bool) var spawning = false
 
 func _ready():
 	._ready()
-	get_node("SceneChanges/LevelEnd/Area/CollisionShape2D").set_deferred("disabled", true)
-	
-	$Dialogs/FirstAttempt/Area2D/CollisionShape2D.disabled = !Globals.after_first_attempt
-	
-	if Globals.after_first_attempt:
-		Globals.after_first_attempt = false
-		$Dialogs/FirstAttempt/Area2D/CollisionShape2D.set_deferred("disabled", false)
-	else:
-		$World/Player/BodyPivot/Helmet.visible = false
+	level_specific_setup()
 
 func _on_dialog_exit_after_fade():
 	var dialog_node = get_node("GUI/Dialog")
@@ -33,3 +25,21 @@ func _on_dialog_exit_after_fade():
 		dialog_node.calling_node.queue_free()
 		spawning = true
 		get_node("SceneChanges/LevelEnd/Area/CollisionShape2D").set_deferred("disabled", false)
+		
+func level_specific_setup():
+	var level_num = Globals.level_num
+	
+	if (level_num == 0):
+		$SceneChanges/LevelEnd/Area/CollisionShape2D.set_deferred("disabled", !Globals.after_first_attempt)
+		$Dialogs/Level0/FirstAttempt/Area2D/CollisionShape2D.disabled = !Globals.after_first_attempt
+		$World/Player/BodyPivot/Helmet.visible = Globals.after_first_attempt
+		
+		if Globals.after_first_attempt:
+			Globals.after_first_attempt = false
+	elif (level_num == 1):
+		# Delete the dialog nodes from previous level
+		for node in $Dialogs/Level0.get_children():
+			node.queue_free()
+		
+		$World/Player.position = $Other/Positions/JetChair.position
+		$World/NPCs/Robot.position = $Other/Positions/BotChair.position

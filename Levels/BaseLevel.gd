@@ -17,11 +17,13 @@ export(NodePath) var current_dialog_node
 
 export(String) var RESTART_SCENE
 export(String) var level_name
+export(float) var level_num
 export(bool) var oxy_status
 export(int) var oxy_depletion_rate = DEFAULT_OXY_RATE
 
 func _ready():
 	$GUI.change_level(level_name)
+	Globals.update_level_num(level_num)
 	
 	# Every time this node loads in a new scene, dialog needs to process input in order to check if player is on floor
 	$GUI/Dialog.set_process(true)
