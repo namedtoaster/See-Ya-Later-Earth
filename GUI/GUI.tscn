@@ -1,0 +1,278 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Dialog/Dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/assets/space.png" type="Texture" id=3]
+[ext_resource path="res://GUI/assets/left.png" type="Texture" id=4]
+[ext_resource path="res://GUI/assets/right.png" type="Texture" id=5]
+[ext_resource path="res://GUI/ProgressBar.gd" type="Script" id=6]
+[ext_resource path="res://assets/images/menus/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_11resize.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/menus/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_35.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/default_font.tres" type="DynamicFont" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "death_fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DeathLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "level_fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "level_fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="GUI" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="TopLabels" type="MarginContainer" parent="."]
+anchor_right = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopLabels"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 84.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="TopLabels/HBoxContainer"]
+margin_top = 12.0
+margin_right = 361.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 100, 50 )
+size_flags_horizontal = 3
+text = "Score: 00000"
+
+[node name="OxygenCounter" type="VBoxContainer" parent="TopLabels/HBoxContainer"]
+margin_left = 365.0
+margin_right = 638.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TopLabels/HBoxContainer/OxygenCounter"]
+margin_right = 273.0
+margin_bottom = 14.0
+text = "Oxygen Remaining"
+align = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="TopLabels/HBoxContainer/OxygenCounter"]
+pause_mode = 1
+margin_top = 18.0
+margin_right = 273.0
+margin_bottom = 74.0
+value = 30.0
+texture_over = ExtResource( 8 )
+texture_progress = ExtResource( 7 )
+script = ExtResource( 6 )
+
+[node name="Level" type="Label" parent="TopLabels/HBoxContainer"]
+margin_left = 642.0
+margin_top = 12.0
+margin_right = 1004.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 100, 50 )
+size_flags_horizontal = 3
+text = "Level 0"
+align = 2
+
+[node name="Dialog" parent="." instance=ExtResource( 2 )]
+
+[node name="BottomMenu" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -145.0
+margin_right = 185.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BottomMenu"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 175.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 165, 125 )
+
+[node name="Keys" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
+margin_right = 165.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 165, 88 )
+alignment = 1
+
+[node name="LeftRight" type="HBoxContainer" parent="BottomMenu/VBoxContainer2/Keys"]
+margin_right = 165.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 165, 58 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Left" type="TextureRect" parent="BottomMenu/VBoxContainer2/Keys/LeftRight"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 80.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="Right" type="TextureRect" parent="BottomMenu/VBoxContainer2/Keys/LeftRight"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 84.0
+margin_right = 165.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="Spacebar" type="TextureRect" parent="BottomMenu/VBoxContainer2/Keys"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 62.0
+margin_right = 165.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 165, 26 )
+texture = ExtResource( 3 )
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
+margin_top = 92.0
+margin_right = 165.0
+margin_bottom = 125.0
+custom_constants/separation = 5
+
+[node name="Inventory" type="Label" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+margin_right = 165.0
+margin_bottom = 14.0
+text = "Inventory"
+
+[node name="Log" type="Label" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+margin_top = 19.0
+margin_right = 165.0
+margin_bottom = 33.0
+text = "Log"
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -45.0
+margin_right = 46.0
+margin_bottom = 45.0
+
+[node name="Background" type="ColorRect" parent="PauseMenu"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 72.0
+margin_bottom = 70.0
+color = Color( 0.203922, 0.443137, 0.615686, 0.698039 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 72.0
+margin_bottom = 70.0
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer"]
+margin_right = 52.0
+margin_bottom = 14.0
+text = "Resume"
+
+[node name="Label2" type="Label" parent="PauseMenu/VBoxContainer"]
+margin_top = 18.0
+margin_right = 52.0
+margin_bottom = 32.0
+text = "Save"
+
+[node name="Label3" type="Label" parent="PauseMenu/VBoxContainer"]
+margin_top = 36.0
+margin_right = 52.0
+margin_bottom = 50.0
+text = "Quit"
+
+[node name="DeathLabel" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.8, 0.415686, 0.384314, 1 )
+text = "You died"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/death_fade_in = SubResource( 1 )
+anims/level_fade_in = SubResource( 2 )
+anims/level_fade_out = SubResource( 3 )
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="RestartTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="TopLabels/HBoxContainer/OxygenCounter/TextureProgress" to="." method="_on_TextureProgress_value_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timers/RestartTimer" to="." method="_on_RestartTimer_timeout"]

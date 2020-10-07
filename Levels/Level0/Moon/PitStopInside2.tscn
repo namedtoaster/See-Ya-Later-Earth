@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/tilesets/dungeon.tres" type="TileSet" id=2]
+[ext_resource path="res://Levels/Level0/Moon/PitStopInside.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Dialog/DialogArea/DialogArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Other/Objects/assets/food.png" type="Texture" id=5]
+[ext_resource path="res://GUI/Dialog/DialogArea/DialogArea.gd" type="Script" id=6]
+[ext_resource path="res://Other/Objects/Item.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 18.4515, 34.5852 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "bounce"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 11.8301 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_away"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 43.8972, 42.8052 )
+
+[node name="PitStopInside" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+RESTART_SCENE = ""
+oxy_status = true
+
+[node name="Ground2" type="TileMap" parent="Tiles" index="0"]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 0, 32, 0, 1, 32, 0, 2, 32, 0, 3, 32, 0, 4, 32, 0, 5, 32, 0, 6, 32, 0, 7, 32, 0, 8, 32, 0, 9, 32, 0, 10, 32, 0, 11, 32, 0, 12, 32, 0, 13, 32, 0, 14, 32, 0, 15, 32, 0, 65536, 32, 0, 65537, 32, 0, 65538, 12, 0, 65539, 3, 0, 65540, 3, 0, 65541, 4, 0, 65542, 4, 0, 65543, 2, 0, 65544, 2, 0, 65545, 4, 0, 65546, 3, 0, 65547, 4, 0, 65548, 2, 0, 65549, 5, 0, 65550, 32, 0, 65551, 32, 0, 131072, 32, 0, 131073, 32, 0, 131074, 12, 0, 131075, 10, 0, 131076, 8, 0, 131077, 9, 0, 131078, 9, 0, 131079, 8, 0, 131080, 8, 0, 131081, 9, 0, 131082, 9, 0, 131083, 9, 0, 131084, 7, 0, 131085, 18, 0, 131086, 32, 0, 131087, 32, 0, 196608, 32, 0, 196609, 32, 0, 196610, 12, 0, 196611, 13, 0, 196612, 14, 0, 196613, 15, 0, 196614, 14, 0, 196615, 14, 0, 196616, 15, 0, 196617, 15, 0, 196618, 15, 0, 196619, 15, 0, 196620, 16, 0, 196621, 5, 0, 196622, 32, 0, 196623, 32, 0, 262144, 32, 0, 262145, 32, 0, 262146, 23, 0, 262147, 13, 0, 262148, 14, 0, 262149, 15, 0, 262150, 14, 0, 262151, 15, 0, 262152, 14, 0, 262153, 14, 0, 262154, 15, 0, 262155, 14, 0, 262156, 16, 0, 262157, 5, 0, 262158, 32, 0, 262159, 32, 0, 327680, 32, 0, 327681, 32, 0, 327682, 12, 0, 327683, 13, 0, 327684, 15, 0, 327685, 15, 0, 327686, 15, 0, 327687, 15, 0, 327688, 15, 0, 327689, 15, 0, 327690, 14, 0, 327691, 14, 0, 327692, 16, 0, 327693, 18, 0, 327694, 32, 0, 327695, 32, 0, 393216, 32, 0, 393217, 32, 0, 393218, 23, 0, 393219, 13, 0, 393220, 15, 0, 393221, 14, 0, 393222, 14, 0, 393223, 14, 0, 393224, 14, 0, 393225, 15, 0, 393226, 14, 0, 393227, 14, 0, 393228, 16, 0, 393229, 6, 0, 393230, 32, 0, 393231, 32, 0, 458752, 32, 0, 458753, 32, 0, 458754, 23, 0, 458755, 22, 0, 458756, 21, 0, 458757, 21, 0, 458758, 20, 0, 458759, 14, 0, 458760, 15, 0, 458761, 21, 0, 458762, 21, 0, 458763, 21, 0, 458764, 19, 0, 458765, 17, 0, 458766, 32, 0, 458767, 32, 0, 524288, 32, 0, 524289, 32, 0, 524290, 29, 0, 524291, 26, 0, 524292, 28, 0, 524293, 26, 0, 524294, 26, 0, 524295, 21, 0, 524296, 21, 0, 524297, 26, 0, 524298, 28, 0, 524299, 26, 0, 524300, 25, 0, 524301, 24, 0, 524302, 32, 0, 524303, 32, 0, 589824, 32, 0, 589825, 32, 0, 589826, 32, 0, 589827, 32, 0, 589828, 32, 0, 589829, 32, 0, 589830, 32, 0, 589831, 32, 0, 589832, 32, 0, 589833, 32, 0, 589834, 32, 0, 589835, 32, 0, 589836, 32, 0, 589837, 32, 0, 589838, 32, 0, 589839, 32, 0 )
+
+[node name="Objects" type="TileMap" parent="Tiles" index="1"]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 262155, 30, 0 )
+
+[node name="Ground" parent="Tiles" index="2"]
+visible = false
+
+[node name="Player" parent="World" index="1"]
+position = Vector2( 512.935, 520.522 )
+
+[node name="Camera2D" parent="World/Player" index="4"]
+limit_right = 1024
+limit_bottom = 600
+
+[node name="Food" type="Area2D" parent="World/Items" index="0"]
+position = Vector2( 292.102, 300.802 )
+script = ExtResource( 7 )
+item_name = "food"
+
+[node name="PlayerCollisionDetection" type="CollisionShape2D" parent="World/Items/Food" index="0"]
+position = Vector2( 0, 0.416704 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="World/Items/Food" index="1"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Items/Food" index="2"]
+autoplay = "bounce"
+anims/bounce = SubResource( 3 )
+anims/fade_away = SubResource( 4 )
+
+[node name="GotFood" type="Node2D" parent="Dialogs" index="0"]
+position = Vector2( 291.104, 299.806 )
+script = ExtResource( 6 )
+delay_start = 2.0
+dialog_text = [ [ "Got the slims and moon cheese!", "Time to head back to the ship." ] ]
+dialog_color = [ Color( 0.541176, 0.309804, 0.309804, 1 ) ]
+names = [ "Jet" ]
+
+[node name="Area2D" type="Area2D" parent="Dialogs/GotFood" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/GotFood/Area2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="NoticeOxy" parent="Dialogs" index="1" instance=ExtResource( 4 )]
+position = Vector2( 514.354, 515.456 )
+delay_start = 2.0
+dialog_text = [ [ "Looks like this building has oxygen being pumped into it.", "That's certainly helpful." ] ]
+dialog_color = [ Color( 0.541176, 0.309804, 0.309804, 1 ) ]
+names = [ "Jet" ]
+activate_player = true
+
+[node name="LevelEnd" parent="SceneChanges" index="0"]
+position = Vector2( 292.269, 297.938 )
+NEXT_SCENE = "res://Levels/Level0/Ship/Level0ShipInterior.tscn"
+[connection signal="body_entered" from="World/Items/Food" to="World/Items/Food" method="_on_Item_body_entered"]
+[connection signal="animation_finished" from="World/Items/Food/AnimationPlayer" to="World/Items/Food" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Dialogs/GotFood/Area2D" to="Dialogs/GotFood" method="_on_Area2D_body_entered"]
+
+[editable path="World/Player"]
