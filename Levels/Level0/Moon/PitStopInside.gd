@@ -16,3 +16,4 @@ func _on_dialog_exit_before_fade():
 	elif current_dialog_name == "GotFood":
 		get_node("SceneChanges/LevelEnd/Area/CollisionShape2D").set_deferred("disabled", false)
 		dialog_node.calling_node.queue_free()
+		Globals.food_collected = true

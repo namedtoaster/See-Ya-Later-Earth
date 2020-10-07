@@ -7,7 +7,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		queue_free()
 	
 func item_collected():
-	$PlayerCollisionDetection.disabled = true
+	get_node("PlayerCollisionDetection").set_deferred("disabled", true)
 	$AnimationPlayer.play("fade_away")
 	var current_scene = get_tree().get_current_scene()
 	
@@ -21,5 +21,5 @@ func item_collected():
 		current_scene.get_node("GUI").increase_oxy(20)
 
 
-func _on_Item_body_entered(body):
+func _on_Item_body_entered(_body):
 	item_collected()

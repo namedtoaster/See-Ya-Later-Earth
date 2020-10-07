@@ -8,10 +8,10 @@
 [ext_resource path="res://GUI/Dialog/DialogArea/DialogArea.gd" type="Script" id=6]
 [ext_resource path="res://Other/Objects/Item.gd" type="Script" id=7]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.4515, 34.5852 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "bounce"
 loop = true
 tracks/0/type = "value"
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 11.8301 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "fade_away"
 length = 0.8
 tracks/0/type = "value"
@@ -43,12 +43,13 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 43.8972, 42.8052 )
 
 [node name="PitStopInside" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 RESTART_SCENE = ""
+level_name = "Pit Stop"
 oxy_status = true
 
 [node name="Ground2" type="TileMap" parent="Tiles" index="0"]
@@ -78,7 +79,7 @@ item_name = "food"
 
 [node name="PlayerCollisionDetection" type="CollisionShape2D" parent="World/Items/Food" index="0"]
 position = Vector2( 0, 0.416704 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="World/Items/Food" index="1"]
 scale = Vector2( 3, 3 )
@@ -86,8 +87,8 @@ texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Items/Food" index="2"]
 autoplay = "bounce"
-anims/bounce = SubResource( 3 )
-anims/fade_away = SubResource( 4 )
+anims/bounce = SubResource( 2 )
+anims/fade_away = SubResource( 3 )
 
 [node name="GotFood" type="Node2D" parent="Dialogs" index="0"]
 position = Vector2( 291.104, 299.806 )
@@ -100,7 +101,7 @@ names = [ "Jet" ]
 [node name="Area2D" type="Area2D" parent="Dialogs/GotFood" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/GotFood/Area2D" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="NoticeOxy" parent="Dialogs" index="1" instance=ExtResource( 4 )]
 position = Vector2( 514.354, 515.456 )

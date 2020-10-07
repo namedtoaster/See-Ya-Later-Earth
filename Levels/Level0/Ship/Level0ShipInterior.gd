@@ -4,6 +4,7 @@ export(bool) var spawning = false
 
 func _ready():
 	._ready()
+	check_level_change()
 	level_specific_setup()
 
 func _on_dialog_exit_after_fade():
@@ -26,8 +27,18 @@ func _on_dialog_exit_after_fade():
 		spawning = true
 		get_node("SceneChanges/LevelEnd/Area/CollisionShape2D").set_deferred("disabled", false)
 		
+func check_level_change():
+	if Globals.food_collected:
+		level_num = 1
+		Globals.update_level_num(level_num)
+		$GUI.change_level(level_name)
+	
 func level_specific_setup():
 	var level_num = Globals.level_num
+	
+	for node in get_node("Dialogs").get_children():
+		if !(str(level_num) in node.name):
+			node.queue_free()
 	
 	if (level_num == 0):
 		$SceneChanges/LevelEnd/Area/CollisionShape2D.set_deferred("disabled", !Globals.after_first_attempt)
@@ -37,9 +48,5 @@ func level_specific_setup():
 		if Globals.after_first_attempt:
 			Globals.after_first_attempt = false
 	elif (level_num == 1):
-		# Delete the dialog nodes from previous level
-		for node in $Dialogs/Level0.get_children():
-			node.queue_free()
-		
 		$World/Player.position = $Other/Positions/JetChair.position
 		$World/NPCs/Robot.position = $Other/Positions/BotChair.position

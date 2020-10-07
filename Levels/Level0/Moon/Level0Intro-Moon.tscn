@@ -18,7 +18,7 @@ outlines = [ PoolVector2Array( 2875, 990.1, 2906.5, 1110.1, 2754.5, 1110.6, 2780
 [node name="Level0Intro-Moon" instance=ExtResource( 2 )]
 script = ExtResource( 6 )
 RESTART_SCENE = "res://Levels/Level0/Ship/Level0ShipInterior.tscn"
-level_name = "0 - Moon"
+level_name = "Moon"
 oxy_status = true
 oxy_depletion_rate = 40
 

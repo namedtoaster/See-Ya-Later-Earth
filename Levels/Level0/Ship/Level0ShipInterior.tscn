@@ -20,7 +20,7 @@ outlines = [ PoolVector2Array( 865.174, 228.89, 860.949, 417.211, 545.159, 411.9
 
 [node name="Level0ShipInterior" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
-level_name = "0 - Space Ship"
+level_name = "Space Ship"
 
 [node name="Ground" parent="Tiles" index="0"]
 visible = false
@@ -55,7 +55,6 @@ position = Vector2( 513.195, 229.587 )
 texture = ExtResource( 9 )
 
 [node name="Level0" type="Node2D" parent="Dialogs" index="0"]
-visible = false
 
 [node name="ShipInteriorReal" parent="Dialogs/Level0" index="0" instance=ExtResource( 4 )]
 position = Vector2( -146.528, 380.989 )

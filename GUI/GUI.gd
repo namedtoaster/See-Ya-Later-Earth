@@ -9,7 +9,7 @@ func update_scene_node(path):
 	current_scene_change_node = get_node(path)
 	
 func change_level(level):
-	$TopLabels/HBoxContainer/Level.text = "Level: " + str(level)
+	$TopLabels/HBoxContainer/Level.text = "Level " + str(Globals.level_num) + ": " + str(level)
 	
 func _process(delta):
 	# Check if dialog playing i.e. its processing is paused. If it is, pause the progress bar too

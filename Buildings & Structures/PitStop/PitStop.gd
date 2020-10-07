@@ -2,7 +2,7 @@ extends StaticBody2D
 
 export(float) var camera_shake = 0.0
 
-func _process(delta):
+func _process(_delta):
 	if $AnimationPlayer.is_playing():
 		var camera = get_tree().get_current_scene().get_node("World/Player/Camera2D")
 		
