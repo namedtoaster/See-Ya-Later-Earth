@@ -20,21 +20,27 @@ func _on_dialog_exit_after_fade():
 		Globals.after_first_attempt = true
 		
 	if current_dialog_name == "FirstAttempt":
-		var nav_node = get_node("Other/ExitShip/Navigation2D")
-		var exit_location = get_node("Other/ExitShip/ExitLocation").position
-		nav_node.begin(exit_location)
+		leave_ship()
 		dialog_node.calling_node.queue_free()
 		spawning = true
 		get_node("SceneChanges/LevelEnd/Area/CollisionShape2D").set_deferred("disabled", false)
-		
+	elif current_dialog_name == "TravelToMars":
+		leave_ship()
+		dialog_node.calling_node.queue_free()
+
+func leave_ship():
+	var nav_node = get_node("Other/ExitShip/Navigation2D")
+	var exit_location = get_node("Other/ExitShip/ExitLocation").position
+	nav_node.begin(exit_location)
+	
 func check_level_change():
-	if Globals.food_collected:
+	if Globals.food_collected or level_num == 1:
 		level_num = 1
-		Globals.update_level_num(level_num)
-		$GUI.change_level(level_name)
+		get_node("SceneChanges/LevelEnd").NEXT_SCENE = "res://Levels/Level1.Mars/Level1.Mars.tscn"
 	
 func level_specific_setup():
-	var level_num = Globals.level_num
+	Globals.update_level_num(level_num)
+	$GUI.change_level(level_name)
 	
 	for node in get_node("Dialogs").get_children():
 		if !(str(level_num) in node.name):

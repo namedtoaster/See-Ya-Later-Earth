@@ -17,7 +17,7 @@ export(NodePath) var current_dialog_node
 
 export(String) var RESTART_SCENE
 export(String) var level_name
-export(float) var level_num
+export(int) var level_num
 export(bool) var oxy_status
 export(int) var oxy_depletion_rate = DEFAULT_OXY_RATE
 
