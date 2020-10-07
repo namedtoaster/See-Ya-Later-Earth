@@ -26,6 +26,9 @@ func _on_dialog_exit_after_fade():
 		var player = get_node("World/Player")
 		get_node("GUI").set_oxy_rate(80)
 		
+	if current_dialog_name == "OxyHint":
+		dialog_node.calling_node.queue_free()
+		
 	if current_dialog_name == "CrowbarOpen":
 		var nav_node = get_node("Other/EnterPitStop/Navigation2D")
 		var exit_location = get_node("Other/EnterPitStop/ExitLocation").position

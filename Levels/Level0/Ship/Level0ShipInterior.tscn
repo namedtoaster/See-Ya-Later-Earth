@@ -21,7 +21,6 @@ outlines = [ PoolVector2Array( 865.174, 228.89, 860.949, 417.211, 545.159, 411.9
 [node name="Level0ShipInterior" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
 level_name = "0 - Space Ship"
-level_num = 1
 
 [node name="Ground" parent="Tiles" index="0"]
 visible = false
