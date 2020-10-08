@@ -52,5 +52,8 @@ texture = ExtResource( 1 )
 autoplay = "bounce"
 anims/bounce = SubResource( 2 )
 anims/fade_away = SubResource( 3 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+rect = Rect2( -50, -50, 100, 100 )
 [connection signal="body_entered" from="." to="." method="_on_Item_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
