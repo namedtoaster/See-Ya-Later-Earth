@@ -4,6 +4,9 @@ var current_scene_change_node
 
 func _ready():
 	$ColorRect.visible = true
+	
+	$Inventory/VBoxContainer/Items.text = ""
+	$Inventory.visible = false
 
 func update_scene_node(path):
 	current_scene_change_node = get_node(path)
@@ -44,6 +47,22 @@ func update_change_node(path):
 func go_to_scene(SCENE):
 	assert(get_tree().change_scene(SCENE) == OK)
 	
+func update_inventory():
+	get_tree().paused = true
+	$Inventory.visible = true
+	
+	var inventory = Globals.inventory.values()
+	var inv_label = $Inventory/VBoxContainer/Items
+	inv_label.text = ""
+	
+	for item in inventory:
+		inv_label.text += item.item_name + ": " + str(item.count) + "\n"
+		
+func exit_inventory():
+	get_tree().paused = false
+	$Inventory.visible = false
+	
+	
 func _input(event):
 	pass
 #	if event.is_action_pressed("move_left"):
@@ -80,3 +99,11 @@ func _on_RestartTimer_timeout():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "level_fade_out":
 		go_to_scene(current_scene_change_node.NEXT_SCENE)
+
+
+func _on_Inventory_pressed():
+	update_inventory()
+
+
+func _on_Button_pressed():
+	exit_inventory()

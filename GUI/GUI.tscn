@@ -123,11 +123,97 @@ align = 2
 
 [node name="Dialog" parent="." instance=ExtResource( 2 )]
 
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.203922, 0.443137, 0.615686, 0.698039 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
+margin_top = 16.0
+margin_right = 100.0
+margin_bottom = 36.0
+text = "Resume"
+
+[node name="Save" type="Button" parent="PauseMenu/VBoxContainer"]
+margin_top = 40.0
+margin_right = 100.0
+margin_bottom = 60.0
+text = "Save"
+
+[node name="Quit" type="Button" parent="PauseMenu/VBoxContainer"]
+margin_top = 64.0
+margin_right = 100.0
+margin_bottom = 84.0
+text = "Quit"
+
+[node name="DeathLabel" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.8, 0.415686, 0.384314, 1 )
+text = "You died"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/death_fade_in = SubResource( 1 )
+anims/level_fade_in = SubResource( 2 )
+anims/level_fade_out = SubResource( 3 )
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="RestartTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BottomMenu" type="MarginContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -145.0
 margin_right = 185.0
+margin_bottom = 12.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -140,7 +226,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 175.0
-margin_bottom = 135.0
+margin_bottom = 147.0
 rect_min_size = Vector2( 165, 125 )
 
 [node name="Keys" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
@@ -186,93 +272,72 @@ stretch_mode = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
 margin_top = 92.0
 margin_right = 165.0
-margin_bottom = 125.0
+margin_bottom = 137.0
 custom_constants/separation = 5
 
-[node name="Inventory" type="Label" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+[node name="Inventory" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
 margin_right = 165.0
-margin_bottom = 14.0
+margin_bottom = 20.0
 text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Log" type="Label" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
-margin_top = 19.0
+[node name="Log" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+margin_top = 25.0
 margin_right = 165.0
-margin_bottom = 33.0
+margin_bottom = 45.0
 text = "Log"
 
-[node name="PauseMenu" type="Control" parent="."]
-visible = false
+[node name="Inventory" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -46.0
-margin_top = -45.0
-margin_right = 46.0
-margin_bottom = 45.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Background" type="ColorRect" parent="PauseMenu"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 72.0
-margin_bottom = 70.0
-color = Color( 0.203922, 0.443137, 0.615686, 0.698039 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 72.0
-margin_bottom = 70.0
-
-[node name="Label" type="Label" parent="PauseMenu/VBoxContainer"]
-margin_right = 52.0
-margin_bottom = 14.0
-text = "Resume"
-
-[node name="Label2" type="Label" parent="PauseMenu/VBoxContainer"]
-margin_top = 18.0
-margin_right = 52.0
-margin_bottom = 32.0
-text = "Save"
-
-[node name="Label3" type="Label" parent="PauseMenu/VBoxContainer"]
-margin_top = 36.0
-margin_right = 52.0
-margin_bottom = 50.0
-text = "Quit"
-
-[node name="DeathLabel" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+[node name="Background" type="ColorRect" parent="Inventory"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 10 )
-custom_colors/font_color = Color( 0.8, 0.415686, 0.384314, 1 )
-text = "You died"
+color = Color( 0.184314, 0.0823529, 0.372549, 0.698039 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 100 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Label" parent="Inventory/VBoxContainer"]
+margin_top = 21.0
+margin_right = 200.0
+margin_bottom = 154.0
+text = "lorem ipsum
+lorem ipsum
+lorem ipsum
+lorem ipsum
+lorem ipsum
+lorem ipsum
+lorem ipsum
+lorem ipsum"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death_fade_in = SubResource( 1 )
-anims/level_fade_in = SubResource( 2 )
-anims/level_fade_out = SubResource( 3 )
-
-[node name="Timers" type="Node2D" parent="."]
-
-[node name="RestartTimer" type="Timer" parent="Timers"]
-wait_time = 5.0
-one_shot = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Resume" type="Button" parent="Inventory/VBoxContainer"]
+margin_top = 158.0
+margin_right = 200.0
+margin_bottom = 178.0
+text = "Resume"
 [connection signal="value_changed" from="TopLabels/HBoxContainer/OxygenCounter/TextureProgress" to="." method="_on_TextureProgress_value_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timers/RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="pressed" from="BottomMenu/VBoxContainer2/VBoxContainer/Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="Inventory/VBoxContainer/Resume" to="." method="_on_Button_pressed"]

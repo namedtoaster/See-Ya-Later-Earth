@@ -8,7 +8,7 @@
 [ext_resource path="res://Other/Objects/Item.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/images/objects/hypercore.png" type="Texture" id=7]
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [sub_resource type="TileSet" id=2]
@@ -22,19 +22,19 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 3 )
+0/shape = SubResource( 1 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "bounce"
 loop = true
 tracks/0/type = "value"
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 11.8301 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "fade_away"
 length = 0.8
 tracks/0/type = "value"
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "bounce"
 loop = true
 tracks/0/type = "value"
@@ -82,7 +82,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 11.8301 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "fade_away"
 length = 0.8
 tracks/0/type = "value"
@@ -137,8 +137,8 @@ item_name = "hypercore"
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" parent="World/Items/Hypercores/Hypercore2" index="2"]
-anims/bounce = SubResource( 4 )
-anims/fade_away = SubResource( 5 )
+anims/bounce = SubResource( 3 )
+anims/fade_away = SubResource( 4 )
 
 [node name="Hypercore3" parent="World/Items/Hypercores" index="2" instance=ExtResource( 6 )]
 position = Vector2( 2920.43, 234.205 )
@@ -148,8 +148,8 @@ item_name = "hypercore"
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" parent="World/Items/Hypercores/Hypercore3" index="2"]
-anims/bounce = SubResource( 6 )
-anims/fade_away = SubResource( 7 )
+anims/bounce = SubResource( 5 )
+anims/fade_away = SubResource( 6 )
 
 [node name="Oxy" type="Node2D" parent="World/Items" index="1"]
 
