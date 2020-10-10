@@ -560,13 +560,6 @@ dialog_color = [ Color( 0.541176, 0.309804, 0.309804, 1 ) ]
 names = [ "Jet" ]
 activate_player = true
 
-[node name="DialogArea" parent="Dialogs" index="1" instance=ExtResource( 2 )]
-position = Vector2( 5640.54, 601.392 )
-dialog_text = [ [ "bewbs", "i like bewbs" ] ]
-dialog_color = [ Color( 0, 0, 0, 1 ) ]
-names = [ "Player" ]
-activate_player = true
-
 [editable path="World/Player"]
 
 [editable path="World/Items/Hypercores/Hypercore"]

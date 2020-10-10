@@ -278,6 +278,8 @@ custom_constants/separation = 5
 [node name="Inventory" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
 margin_right = 165.0
 margin_bottom = 20.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Inventory"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -316,10 +318,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Items" type="Label" parent="Inventory/VBoxContainer"]
-margin_top = 21.0
+[node name="Icons" type="HBoxContainer" parent="Inventory/VBoxContainer"]
+margin_top = 19.0
 margin_right = 200.0
-margin_bottom = 154.0
+margin_bottom = 19.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Label" parent="Inventory/VBoxContainer"]
+margin_top = 23.0
+margin_right = 200.0
+margin_bottom = 156.0
 text = "lorem ipsum
 lorem ipsum
 lorem ipsum
@@ -332,10 +342,10 @@ align = 1
 valign = 1
 
 [node name="Resume" type="Button" parent="Inventory/VBoxContainer"]
-margin_top = 158.0
+margin_top = 160.0
 margin_right = 200.0
-margin_bottom = 178.0
-text = "Resume"
+margin_bottom = 180.0
+text = "Go Back"
 [connection signal="value_changed" from="TopLabels/HBoxContainer/OxygenCounter/TextureProgress" to="." method="_on_TextureProgress_value_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timers/RestartTimer" to="." method="_on_RestartTimer_timeout"]

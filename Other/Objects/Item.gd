@@ -19,9 +19,9 @@ func item_collected():
 		open_door_dialog_node.queue_free()
 	elif item_name == "oxy":
 		current_scene.get_node("GUI").increase_oxy(20)
-		Globals.add_item("oxy")
+		Globals.add_item("oxy", "res://Other/Objects/assets/oxy.png")
 	elif item_name == "hypercore":
-		Globals.add_item("hypercore")
+		Globals.add_item("hypercore", "res://assets/images/objects/hypercore.png")
 
 
 func _on_Item_body_entered(_body):

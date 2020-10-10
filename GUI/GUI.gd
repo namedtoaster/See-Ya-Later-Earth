@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var current_scene_change_node
+const Item = preload("res://GUI/Item.tscn")
 
 func _ready():
 	$ColorRect.visible = true
@@ -46,21 +47,10 @@ func update_change_node(path):
 	
 func go_to_scene(SCENE):
 	assert(get_tree().change_scene(SCENE) == OK)
+
 	
-func update_inventory():
-	get_tree().paused = true
-	$Inventory.visible = true
-	
-	var inventory = Globals.inventory.values()
-	var inv_label = $Inventory/VBoxContainer/Items
-	inv_label.text = ""
-	
-	for item in inventory:
-		inv_label.text += item.item_name + ": " + str(item.count) + "\n"
-		
-func exit_inventory():
-	get_tree().paused = false
-	$Inventory.visible = false
+func toggle_inventory():
+	$Inventory.visible = !$Inventory.visible
 	
 	
 func _input(event):
@@ -102,8 +92,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Inventory_pressed():
-	update_inventory()
-
+	toggle_inventory()
 
 func _on_Button_pressed():
-	exit_inventory()
+	toggle_inventory()
