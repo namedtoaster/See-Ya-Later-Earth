@@ -1,4 +1,5 @@
 extends Character
+var attached = false
 
 func set_dead(value):
 	$StateMachine.set_active(false)
