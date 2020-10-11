@@ -24,5 +24,6 @@ func item_collected():
 		Globals.add_item("hypercore", "res://assets/images/objects/hypercore.png")
 
 
-func _on_Item_body_entered(_body):
-	item_collected()
+func _on_Item_body_entered(body):
+	if body.name == "Player":
+		item_collected()

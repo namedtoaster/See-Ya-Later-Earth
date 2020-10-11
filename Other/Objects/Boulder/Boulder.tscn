@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 721.732, 77.8516, 257.906, 2.47507, -257.906, -2.47507, 489.754, 342.625, 0, 0, 0, 0, 250.954, 52.8556 )
+"points": PoolVector2Array( 0, 0, 0, 0, 721.732, 77.8516, 257.906, 2.47507, -257.906, -2.47507, 467.146, 144.159, 0, 0, 0, 0, 241.875, 34.8498 )
 }
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -41,15 +41,15 @@ position = Vector2( 721.732, 77.8516 )
 rotation = 1.49932
 loop = false
 
-[node name="Body" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
+[node name="BoulderBody" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
 position = Vector2( -49.6667, -1.18672 )
 rotation = -1.14784
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/BoulderBody"]
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/Body"]
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D/BoulderBody"]
 position = Vector2( 3.8147e-06, 3.8147e-06 )
 texture = ExtResource( 1 )
 
@@ -65,5 +65,5 @@ anims/explode = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
 shape = SubResource( 4 )
-[connection signal="animation_finished" from="AnimationPlayer" to="Path2D/PathFollow2D/Body" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="body_entered" from="End" to="Path2D/PathFollow2D/Body" method="_on_End_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="Path2D/PathFollow2D/BoulderBody" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="End" to="Path2D/PathFollow2D/BoulderBody" method="_on_End_body_entered"]

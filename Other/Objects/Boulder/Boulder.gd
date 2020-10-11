@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var path_follow = get_parent()
-var enabled = true
+var enabled = false
 
 var speed = 200
 
@@ -13,9 +13,10 @@ func _physics_process(delta):
 
 
 func _on_End_body_entered(body):
-	if body.name == "Body":
+	if body.name == "BoulderBody":
 		get_owner().get_node("AnimationPlayer").play("explode")
-		get_owner().get_node("Path2D/PathFollow2D/Body/Sprite").visible = false
+		get_owner().get_node("Path2D/PathFollow2D/BoulderBody/Sprite").visible = false
+		get_owner().get_node("Explosion").visible = true
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
