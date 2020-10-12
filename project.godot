@@ -131,6 +131,11 @@ attack={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_19="Tether"
+2d_physics/layer_20="TetherRim"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true
