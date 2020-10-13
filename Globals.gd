@@ -6,6 +6,8 @@ var level_num = 0
 const Inventory = preload('res://Inventory.gd')
 const Item = preload('res://GUI/Item.tscn')
 onready var inventory = {}
+var tether
+var tether_area
 
 # Level 0 (intro) specific values
 var after_first_attempt = false
@@ -48,3 +50,18 @@ func add_item(name, texture_path):
 		item_icon_instance.get_node("Label").text = "x1"
 		item_icon_instance.get_node("Control/Sprite").texture = load(texture_path)
 		icons.add_child(item_icon_instance)
+		
+		
+func set_tether_and_area(tether_path, tether_area_path):
+	tether = tether_path
+	tether_area = tether_area_path
+	var current_scene = get_tree().get_current_scene()
+	var player = current_scene.get_node("World/Player")
+	player.attached = true
+	
+func remove_tether():
+	get_node(tether).node_b = ""
+	get_node(tether_area).set_deferred("disabled", true)
+	var current_scene = get_tree().get_current_scene()
+	var player = current_scene.get_node("World/Player")
+	player.attached = false

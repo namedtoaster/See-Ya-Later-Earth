@@ -13,11 +13,10 @@ radius = 15.1651
 
 [node name="Anchor" type="StaticBody2D" parent="."]
 collision_layer = 262144
-collision_mask = 262144
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
 shape = SubResource( 1 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="Anchor"]
 scale = Vector2( 0.2, 0.2 )
@@ -33,15 +32,13 @@ softness = 0.1
 [node name="RopePoint" type="RigidBody2D" parent="Anchor/RopeLink"]
 position = Vector2( 0, 20.1673 )
 collision_layer = 262144
-collision_mask = 262144
-mass = 100.0
+collision_mask = 0
 gravity_scale = 0.0
-sleeping = true
 linear_damp = 0.0
+angular_damp = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/RopeLink/RopePoint"]
 shape = SubResource( 2 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="Anchor/RopeLink/RopePoint"]
 scale = Vector2( 0.2, 0.2 )
@@ -57,15 +54,13 @@ softness = 0.1
 [node name="RopePoint2" type="RigidBody2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D"]
 position = Vector2( 0, 20.5444 )
 collision_layer = 262144
-collision_mask = 262144
-mass = 100.0
+collision_mask = 0
 gravity_scale = 0.0
-sleeping = true
 linear_damp = 0.0
+angular_damp = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2"]
 shape = SubResource( 2 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2"]
 scale = Vector2( 0.2, 0.2 )
@@ -81,15 +76,12 @@ softness = 0.1
 [node name="RopePoint3" type="RigidBody2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D"]
 position = Vector2( 0, 20.9415 )
 collision_layer = 262144
-collision_mask = 262144
-mass = 100.0
+collision_mask = 0
 gravity_scale = 0.0
-sleeping = true
-linear_damp = 0.0
+linear_damp = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3"]
 shape = SubResource( 2 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3"]
 scale = Vector2( 0.2, 0.2 )
@@ -105,15 +97,12 @@ softness = 0.1
 [node name="RopePoint4" type="RigidBody2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3/PinJoint2D"]
 position = Vector2( 0, 20.9415 )
 collision_layer = 262144
-collision_mask = 262144
-mass = 100.0
+collision_mask = 0
 gravity_scale = 0.0
-sleeping = true
-linear_damp = 0.0
+linear_damp = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3/PinJoint2D/RopePoint4"]
 shape = SubResource( 2 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3/PinJoint2D/RopePoint4"]
 scale = Vector2( 0.2, 0.2 )
@@ -124,20 +113,18 @@ position = Vector2( 0, 22.003 )
 node_a = NodePath("..")
 node_b = NodePath("RopePoint5")
 bias = 0.9
+disable_collision = false
 softness = 0.1
 
 [node name="RopePoint5" type="RigidBody2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3/PinJoint2D/RopePoint4/PinJoint2D"]
 position = Vector2( 0, 19.0075 )
 collision_layer = 262144
-collision_mask = 262144
-mass = 100.0
+collision_mask = 0
 gravity_scale = 0.0
-sleeping = true
-linear_damp = 0.0
+linear_damp = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3/PinJoint2D/RopePoint4/PinJoint2D/RopePoint5"]
 shape = SubResource( 2 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3/PinJoint2D/RopePoint4/PinJoint2D/RopePoint5"]
 scale = Vector2( 0.2, 0.2 )
@@ -148,10 +135,12 @@ position = Vector2( 0, 22.003 )
 node_a = NodePath("..")
 node_b = NodePath("RopeEnd")
 bias = 0.9
+disable_collision = false
 softness = 0.1
 
 [node name="RopeEnd" parent="Anchor/RopeLink/RopePoint/PinJoint2D/RopePoint2/PinJoint2D/RopePoint3/PinJoint2D/RopePoint4/PinJoint2D/RopePoint5/PinJoint2D" instance=ExtResource( 1 )]
-position = Vector2( 0, 34.0727 )
+position = Vector2( 0, 16.9072 )
+linear_damp = 50.0
 
 [node name="Area2D" type="StaticBody2D" parent="."]
 collision_layer = 524288
