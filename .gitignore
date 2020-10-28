@@ -5,3 +5,6 @@
 bin/
 build/
 lib/
+
+# VS Code stuff
+.vscode
