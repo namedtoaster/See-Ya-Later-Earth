@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Other/Objects/Rope/DynamicRope/RopePointDynamic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Other/Objects/Rope/DynamicRope/RopeDynamic.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 23.3041
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 15.1651
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 8.26138
+
+[node name="Rope" type="Node2D"]
+script = ExtResource( 4 )
+num_links = 3
+
+[node name="Anchor" type="StaticBody2D" parent="."]
+collision_layer = 262144
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Anchor"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="RopeLink" type="PinJoint2D" parent="Anchor"]
+node_a = NodePath("..")
+node_b = NodePath("RopePoint")
+bias = 0.9
+softness = 0.1
+
+[node name="RopePoint" parent="Anchor/RopeLink" instance=ExtResource( 3 )]
+
+[node name="RopeEnd" type="RigidBody2D" parent="."]
+position = Vector2( -3.80464, 163.516 )
+collision_layer = 512
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeEnd"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="RopeEnd"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="RopeLink3" type="PinJoint2D" parent="RopeEnd"]
+node_a = NodePath("..")
+bias = 0.9
+disable_collision = false
+softness = 0.1
+
+[node name="Area2D" type="Area2D" parent="RopeEnd"]
+gravity = 0.0
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeEnd/Area2D"]
+shape = SubResource( 3 )
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_layer = 524288
+collision_mask = 524289
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2( 0.85, 0.85 )
+build_mode = 1
+polygon = PoolVector2Array( 0.279785, -289.881, 70.261, -279.383, 141.409, -251.391, 199.726, -208.236, 249.88, -140.587, 277.872, -72.9386, 288.369, 1.7081, 279.039, 78.6875, 247.547, 148.669, 205.558, 206.987, 141.409, 252.474, 76.0928, 283.966, 1.44611, 290.964, -76.6996, 282.8, -150.18, 248.975, -204.999, 204.654, -251.653, 146.336, -277.313, 81.0202, -288.976, 1.7081, -279.645, -68.2732, -250.487, -140.587, -209.664, -201.238, -144.348, -249.058, -74.3669, -277.051 )
+disabled = true
+[connection signal="body_entered" from="RopeEnd" to="." method="_on_RopeEnd_body_entered"]
+[connection signal="body_entered" from="RopeEnd/Area2D" to="RopeEnd/Area2D" method="_on_Area2D_body_entered"]

@@ -7,10 +7,10 @@
 radius = 15.1651
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 20.6679
+radius = 8.26138
 
 [node name="RopePoint" type="RigidBody2D"]
-collision_layer = 262144
+collision_layer = 512
 collision_mask = 0
 gravity_scale = 0.0
 
@@ -23,15 +23,15 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="RopeLink3" type="PinJoint2D" parent="."]
-position = Vector2( 0, 25.2498 )
 node_a = NodePath("..")
-bias = 0.1
+bias = 0.9
 disable_collision = false
 softness = 0.1
 
 [node name="Area2D" type="Area2D" parent="."]
 gravity = 0.0
-collision_layer = 262144
+collision_layer = 512
+collision_mask = 0
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
