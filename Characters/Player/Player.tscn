@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://characters/player/player.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=2]
@@ -41,13 +41,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4.71815, 4.22717 )
-
-[sub_resource type="CircleShape2D" id=5]
-radius = 1.63294
+extents = Vector2( 7.64197, 4.71533 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 2147483649
+collision_mask = 2147483648
 script = ExtResource( 2 )
 dialog_color = Color( 0.0509804, 0.458824, 0.247059, 1 )
 
@@ -80,8 +77,36 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -16.6083 )
 texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4.00541 )
+[node name="PopupLayer" type="CanvasLayer" parent="BodyPivot"]
+
+[node name="Popup" type="Popup" parent="BodyPivot/PopupLayer"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BodyPivot/PopupLayer/Popup"]
+margin_left = 40.0
+margin_top = 11.4956
+margin_right = 100.0
+margin_bottom = 25.4956
+text = "Attach (E)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="BodyPivot"]
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.18219 )
 shape = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -91,12 +116,3 @@ limit_left = 0
 limit_top = 0
 smoothing_enabled = true
 smoothing_speed = 2.0
-
-[node name="TetherCollision" type="KinematicBody2D" parent="."]
-position = Vector2( 0, 4.50781 )
-collision_layer = 512
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherCollision"]
-rotation = 1.74846e-07
-shape = SubResource( 5 )

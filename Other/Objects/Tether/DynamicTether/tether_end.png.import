@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rope.png-29a54f5482b645679a1f27d2dade642f.stex"
+path="res://.import/tether_end.png-18f105d6aa4bc4790da6c8cd5870ee8e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Other/Objects/Rope/DynamicRope/rope.png"
-dest_files=[ "res://.import/rope.png-29a54f5482b645679a1f27d2dade642f.stex" ]
+source_file="res://Other/Objects/Tether/DynamicTether/tether_end.png"
+dest_files=[ "res://.import/tether_end.png-18f105d6aa4bc4790da6c8cd5870ee8e.stex" ]
 
 [params]
 

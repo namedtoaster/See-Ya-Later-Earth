@@ -1,6 +1,0 @@
-[gd_scene format=2]
-
-[node name="RopeLink" type="PinJoint2D"]
-bias = 0.9
-disable_collision = false
-softness = 0.2

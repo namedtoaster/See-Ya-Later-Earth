@@ -7,7 +7,6 @@ func handle_input(event):
 	if event.is_action_pressed("jump"):
 		emit_signal("finished", "jump")
 	if event.is_action_pressed("interact"):
-		if get_owner().name == "Player" and get_owner().attached:
-			print("remove")
-			Globals.remove_tether()
+		if get_owner().name == "Player" and get_owner().can_attach:
+			Globals.attach_player()
 	return .handle_input(event)
