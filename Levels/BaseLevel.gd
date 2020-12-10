@@ -57,3 +57,6 @@ func _on_dialog_exit_after_fade():
 	
 func kill_player():
 	pass
+
+func move_tether_attach():
+	$Other/TetherAttach.begin_attach()

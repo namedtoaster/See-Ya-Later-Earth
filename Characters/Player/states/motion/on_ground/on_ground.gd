@@ -8,5 +8,5 @@ func handle_input(event):
 		emit_signal("finished", "jump")
 	if event.is_action_pressed("interact"):
 		if get_owner().name == "Player" and get_owner().can_attach:
-			Globals.attach_player()
+			Globals.attach()
 	return .handle_input(event)

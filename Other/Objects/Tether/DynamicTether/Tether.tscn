@@ -17,6 +17,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="Anchor"]
 scale = Vector2( 0.2, 0.2 )

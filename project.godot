@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "Robot",
 "language": "GDScript",
 "path": "res://Characters/NPC/Robot/Robot.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "TetherAttach",
+"language": "GDScript",
+"path": "res://Other/Objects/Tether/DynamicTether/TetherAttach.gd"
 } ]
 _global_script_class_icons={
 "BaseLevel": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "Inventory": "",
 "NPC": "",
 "OxyDepletion": "",
-"Robot": ""
+"Robot": "",
+"TetherAttach": ""
 }
 
 [application]

@@ -2,14 +2,22 @@ extends Node
 
 # Global vars
 var level_num = 0
+
+# Inventory vars
 #onready var inventory = preload('res://Inventory.gd').new()
 const Inventory = preload('res://Inventory.gd')
 const Item = preload('res://GUI/Item.tscn')
 onready var inventory = {}
+
+# Tether vars
 var tether
 var old_tether
 var tether_area
 var old_tether_area
+var tmp_tether
+var tmp_tether_area
+var TetherAttach = preload('res://Other/Objects/Tether/DynamicTether/TetherAttach.tscn')
+var attaching = false
 
 # Level 0 (intro) specific values
 var after_first_attempt = false
@@ -18,15 +26,25 @@ var food_collected = false
 
 var player
 
+
+# Global functions
+# --------------------------------------------------------------------
 func _ready():
+	# Assign player var
 	var current_scene = get_tree().get_current_scene()
 	player = current_scene.get_node("World/Player")
+	
+	
+# Level functions	
+# --------------------------------------------------------------------
 
-# Level functions
 func update_level_num(level):
 	level_num = level
 
+
+
 # Inventory functions
+# --------------------------------------------------------------------
 #func _input(event):
 #	if event.is_action_pressed("click"):
 #		add_item("oxy")
@@ -58,43 +76,39 @@ func add_item(name, texture_path):
 		item_icon_instance.get_node("Control/Sprite").texture = load(texture_path)
 		icons.add_child(item_icon_instance)
 	
+
+
+# Tether functions
+# --------------------------------------------------------------------
 func reset_tether_and_area():
 	tether = null
 	tether_area = null
 	
-func attach_player():
-	var current_scene = get_tree().get_current_scene()
-	var player = current_scene.get_node("World/Player")
 	
-	if tether != null and tether_area != null:
-		var tmp_tether = tether
-		var tmp_tether_area = tether_area
-		
-		# Remove the old tether		
-		old_tether.get_node("Joint").node_b = ""
-		# Enable the detect player area on the end point
-		old_tether.get_node("DetectPlayer/CollisionShape2D").set_deferred("disabled", false)
-		# Disable the area col
-		old_tether_area.get_node("CollisionPolygon2D").set_deferred("disabled", true)
-		
-		
-		# Attach player to new tether
-		# First update the rigid body position
-#		tether.mode = RigidBody2D.MODE_STATIC
-#		tether.position = player.position
-#		tether.apply_central_impulse(Vector2.ZERO)
-#		tether.mode = RigidBody2D.MODE_RIGID
-		tether.move = true
-		
-		# Now attach the player
-		tether.get_node("Joint").node_a = tether.get_path()
-		tether.get_node("Joint").node_b = player.get_path()
-		#tether.get_node("PinJoint2D").queue_free()
-		# Disable the detect player area on the end point
-		tether.get_node("DetectPlayer/CollisionShape2D").set_deferred("disabled", true)
-		# Enable the area col
-		tether_area.get_node("CollisionPolygon2D").set_deferred("disabled", false)
+func attach():
+	player.can_attach = false
+	tmp_tether = tether
+	tmp_tether_area = tether_area
+	
+	get_tree().get_current_scene().move_tether_attach()
+	
+func finish_attach():
+	# Enable the detect player area on the end point
+	old_tether.get_node("DetectPlayer/CollisionShape2D").set_deferred("disabled", false)
+	# Disable the area col
+	old_tether_area.get_node("CollisionPolygon2D").set_deferred("disabled", true)
+	
+	# Disable the detect player area on the end point
+	tether.get_node("DetectPlayer/CollisionShape2D").set_deferred("disabled", true)
+	# Enable the area col
+	tether_area.get_node("CollisionPolygon2D").set_deferred("disabled", false)
 
-		# Set the new old tether/area
-		old_tether = tmp_tether
-		old_tether_area = tmp_tether_area
+	# Set the new old tether/area
+	old_tether = tmp_tether
+	old_tether.linear_velocity = Vector2()
+	old_tether.set_sleeping(true)
+	old_tether_area = tmp_tether_area
+	
+	# Reset player and attach to him
+	player.can_attach = false
+	old_tether.get_node("Joint").node_b = player.get_path()

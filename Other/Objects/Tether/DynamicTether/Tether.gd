@@ -14,16 +14,16 @@ func _ready():
 	current_point.get_node("DetectPlayer").queue_free()
 	
 	# Get the player
-	var current_scene = get_tree().get_current_scene()
-	player = current_scene.get_node("World/Player")
+	player = Globals.player
 	
 	for i in range(1, num_links):
 		# Create a new rope point and link it as appropriate
 		var new_child = TetherPoint.instance()
+		new_child.position.y = (i- 1) * 5
 		
 		var pin_joint = current_point.get_node("Joint")
 		pin_joint.node_a = current_point.get_path()
-		pin_joint.add_child(new_child)
+		$Anchor/RopeLink.add_child(new_child)
 		pin_joint.node_b = new_child.get_path()
 		#get_node(pin_joint.node_b).position = Vector2(0.0, point_separation)
 		
@@ -60,17 +60,22 @@ func _ready():
 	$Area2D.scale = Vector2(1.0 * num_links / 35, 1.0 * num_links / 35)
 		
 func _leaving_hit(body):
-	if body.name == "Player":
+	var TetherAttach = get_tree().get_current_scene().get_node("Other/TetherAttach")
+	if body.name == "Player" and !TetherAttach.attaching:
 		body._close_popup()
 		body.can_attach = false
 		Globals.reset_tether_and_area()
 
 func _hit(body):
 	if body.name == "Player":
-		# Display popup to ask if user wants to attach			
-		body._attach_popup()
-		body.can_attach = true
+		new_tether(true)
 			
-		if EndPoint.get_node("Joint").node_b != player.get_path():
-			Globals.tether = EndPoint
-			Globals.tether_area = $Area2D
+func new_tether(popup):
+	# Display popup to ask if user wants to attach			
+	if popup:
+		Globals.player._attach_popup()
+	Globals.player.can_attach = true
+		
+	if EndPoint.get_node("Joint").node_b != player.get_path():
+		Globals.tether = EndPoint
+		Globals.tether_area = $Area2D
