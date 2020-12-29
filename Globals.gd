@@ -1,15 +1,24 @@
 extends Node
 
 # Global vars
+# ------------------------------------------------------------------------------
+var edit_mode = false
 var level_num = 0
+var player
+# ------------------------------------------------------------------------------
+
 
 # Inventory vars
+# ------------------------------------------------------------------------------
 #onready var inventory = preload('res://Inventory.gd').new()
 const Inventory = preload('res://Inventory.gd')
 const Item = preload('res://GUI/Item.tscn')
 onready var inventory = {}
+# ------------------------------------------------------------------------------
+
 
 # Tether vars
+# ------------------------------------------------------------------------------
 var tether
 var old_tether
 var tether_area
@@ -18,29 +27,34 @@ var tmp_tether
 var tmp_tether_area
 var TetherAttach = preload('res://Other/Objects/Tether/DynamicTether/TetherAttach.tscn')
 var attaching = false
+# ------------------------------------------------------------------------------
+
 
 # Level 0 (intro) specific values
+# ------------------------------------------------------------------------------
 var after_first_attempt = false
 var first_time_on_moon = true
 var food_collected = false
-
-var player
+# ------------------------------------------------------------------------------
 
 
 # Global functions
-# --------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 func _ready():
 	# Assign player var
 	var current_scene = get_tree().get_current_scene()
 	player = current_scene.get_node("World/Player")
 	
+func toggle_edit_mode():
+	edit_mode = !edit_mode
+# ------------------------------------------------------------------------------
+	
 	
 # Level functions	
 # --------------------------------------------------------------------
-
 func update_level_num(level):
 	level_num = level
-
+# ------------------------------------------------------------------------------
 
 
 # Inventory functions
@@ -75,11 +89,11 @@ func add_item(name, texture_path):
 		item_icon_instance.get_node("Label").text = "x1"
 		item_icon_instance.get_node("Control/Sprite").texture = load(texture_path)
 		icons.add_child(item_icon_instance)
-	
+# ------------------------------------------------------------------------------
 
 
 # Tether functions
-# --------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 func reset_tether_and_area():
 	tether = null
 	tether_area = null
@@ -112,3 +126,4 @@ func finish_attach():
 	# Reset player and attach to him
 	player.can_attach = false
 	old_tether.get_node("Joint").node_b = player.get_path()
+# ------------------------------------------------------------------------------
