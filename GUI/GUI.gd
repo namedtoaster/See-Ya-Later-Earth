@@ -52,9 +52,13 @@ func go_to_scene(SCENE):
 func toggle_inventory():
 	$Inventory.visible = !$Inventory.visible
 	
+func toggle_pause():
+	$PauseMenu.visible = !$PauseMenu.visible
+	
 	
 func _input(event):
-	pass
+	if event.is_action_pressed("escape"):
+		toggle_pause()
 #	if event.is_action_pressed("move_left"):
 #		$BottomMenu/VBoxContainer2/Keys/LeftRight/Left.modulate = Color(1, 1, 1, 1)
 #	else:
@@ -96,3 +100,7 @@ func _on_Inventory_pressed():
 
 func _on_Button_pressed():
 	toggle_inventory()
+
+func _on_EditMode_pressed():
+	Globals.toggle_edit_mode()
+	get_tree().get_current_scene().toggle_tether_editor()

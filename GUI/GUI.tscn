@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://GUI/GUI.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Dialog/Dialog.tscn" type="PackedScene" id=2]
@@ -9,6 +9,25 @@
 [ext_resource path="res://assets/images/menus/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_11resize.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/menus/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_35.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/default_font.tres" type="DynamicFont" id=10]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [sub_resource type="Animation" id=1]
 resource_name = "death_fade_in"
@@ -133,6 +152,7 @@ margin_left = -100.0
 margin_top = -100.0
 margin_right = 100.0
 margin_bottom = 100.0
+script = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -211,9 +231,8 @@ __meta__ = {
 [node name="BottomMenu" type="MarginContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -145.0
+margin_top = -182.0
 margin_right = 185.0
-margin_bottom = 12.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -226,7 +245,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 175.0
-margin_bottom = 147.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 165, 125 )
 
 [node name="Keys" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
@@ -272,12 +291,23 @@ stretch_mode = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
 margin_top = 92.0
 margin_right = 165.0
-margin_bottom = 137.0
+margin_bottom = 162.0
 custom_constants/separation = 5
 
-[node name="Inventory" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+[node name="EditMode" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
 margin_right = 165.0
 margin_bottom = 20.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Edit Mode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+margin_top = 25.0
+margin_right = 165.0
+margin_bottom = 45.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Inventory"
@@ -286,9 +316,9 @@ __meta__ = {
 }
 
 [node name="Log" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
-margin_top = 25.0
+margin_top = 50.0
 margin_right = 165.0
-margin_bottom = 45.0
+margin_bottom = 70.0
 text = "Log"
 
 [node name="Inventory" type="Control" parent="."]
@@ -349,5 +379,6 @@ text = "Go Back"
 [connection signal="value_changed" from="TopLabels/HBoxContainer/OxygenCounter/TextureProgress" to="." method="_on_TextureProgress_value_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timers/RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="pressed" from="BottomMenu/VBoxContainer2/VBoxContainer/EditMode" to="." method="_on_EditMode_pressed"]
 [connection signal="pressed" from="BottomMenu/VBoxContainer2/VBoxContainer/Inventory" to="." method="_on_Inventory_pressed"]
 [connection signal="pressed" from="Inventory/VBoxContainer/Resume" to="." method="_on_Button_pressed"]
