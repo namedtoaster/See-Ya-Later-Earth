@@ -3,8 +3,10 @@
 class_name BaseLevel
 extends Node2D
 
-const DEFAULT_OXY_RATE = 1
+var TetherEditor = preload("res://Other/Objects/Tether/DynamicTether/EditorBody.tscn")
+var currentEditor = null
 
+# Dialog variables
 var intro_dialog = null
 #["Welcome to the game",
 #"Do this, do that",
@@ -15,9 +17,13 @@ var intro_dialog = null
 export(Color) var dialog_color
 export(NodePath) var current_dialog_node
 
+# Level Variables
 export(String) var RESTART_SCENE
 export(String) var level_name
 export(int) var level_num
+
+# Oxy variables
+const DEFAULT_OXY_RATE = 1
 export(bool) var oxy_status
 export(int) var oxy_depletion_rate = DEFAULT_OXY_RATE
 
@@ -36,6 +42,9 @@ func _ready():
 	
 	# Fade level in
 	$GUI/AnimationPlayer.play("level_fade_in")
+	
+	# Delete the tether editor until needed
+	$World/Items/TetherEdit/EditorBody.queue_free()
 
 func _on_dialog_enter():
 	pass
@@ -54,6 +63,26 @@ func _on_dialog_exit_after_fade():
 	# Virtual function
 	# Must be inherited by children if there is anything to be perfomred
 	# when exit a dialog area after fade
+	
+func _input(event):
+	if Globals.edit_mode:
+		var camera = Globals.player.get_node("Camera2D")
+		if event.is_action_pressed("move_left"):
+			camera.position.x -= 10
+		if event.is_action_pressed("move_right"):
+			camera.position.x += 10
+		if event.is_action_pressed("move_up"):
+			camera.position.y -= 10
+		if event.is_action_pressed("move_down"):
+			camera.position.y += 10
+	
+func toggle_tether_editor():
+	if currentEditor == null:
+		currentEditor = TetherEditor.instance()
+		$World/Items/TetherEdit.add_child(currentEditor)
+	else:
+		currentEditor.queue_free()
+		currentEditor = null
 	
 func kill_player():
 	pass
