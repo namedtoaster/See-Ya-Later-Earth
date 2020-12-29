@@ -1,6 +1,6 @@
 extends BaseLevel
 
-func _ready():	
+func _ready():
 	._ready()
 
 func _on_dialog_exit_before_fade():
