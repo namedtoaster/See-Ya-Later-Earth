@@ -1,8 +1,5 @@
 extends "on_ground.gd"
 
-export(float) var MAX_WALK_SPEED = 200
-export(float) var MAX_RUN_SPEED = 300
-
 func enter():
 	speed = 0.0
 	velocity = Vector2()
@@ -14,7 +11,7 @@ func enter():
 func handle_input(event):
 	return .handle_input(event)
 
-func update(delta):
+func update(_delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
 		emit_signal("finished", "idle")

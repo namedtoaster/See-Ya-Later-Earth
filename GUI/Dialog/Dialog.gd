@@ -57,11 +57,7 @@ func _input(_event):
 				else:
 					set_status(false)
 				
-func _process(delta):
-	var player = get_tree().get_current_scene().get_node("World/Player")
-	
-	# Uncomment for now - I think I wrote this for the 2d platformer version
-	#if player.is_on_floor():
+func _process(_delta):
 	var current_scene = get_tree().get_current_scene()
 	if current_scene.intro_dialog != null:
 		change_dialog_text("")

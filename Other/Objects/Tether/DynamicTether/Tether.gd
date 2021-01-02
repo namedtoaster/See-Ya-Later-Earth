@@ -5,7 +5,8 @@ var TetherEndTex = preload("res://Other/Objects/Tether/DynamicTether/tether_end.
 
 var EndPoint
 var player
-var load_data = []
+var load_position_data = []
+var load_rotation_data = []
 export(int)var num_links = 1
 export(String)var tether_name = "Tether"
 onready var current_point = $Anchor/RopeLink/TetherPoint
@@ -29,8 +30,9 @@ func _ready():
 	for i in range(1, num_links):
 		# Create a new rope point and link it as appropriate
 		var new_child = TetherPoint.instance()
-		if load_data != []:
-			new_child.position = load_data[i]
+		if load_position_data != [] and load_rotation_data != []:
+			new_child.position = load_position_data[i]
+			new_child.rotation = load_rotation_data[i]
 		else:
 			new_child.position.y = (i- 1) * 5
 		
@@ -86,18 +88,22 @@ func _hit(body):
 func save(save_game: Resource):
 	# Get the position of all the tether links
 	var position_data = []
+	var rotation_data = []
 	
 	for child_link in $Anchor/RopeLink.get_children():
 		position_data.append(child_link.position)
+		rotation_data.append(child_link.rotation)
 		
 	save_game.data[SAVE_KEY] = {
-		'position_data': position_data
+		'position_data': position_data,
+		'rotation_data': rotation_data
 	}
 	
 func load(save_game: Resource):
 	if SAVE_KEY != null:
 		var data: Dictionary = save_game.data[SAVE_KEY]
-		load_data = data['position_data']
+		load_position_data = data['position_data']
+		load_rotation_data = data['rotation_data']
 				
 func new_tether(popup):
 	# Display popup to ask if user wants to attach			

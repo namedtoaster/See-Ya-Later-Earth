@@ -20,7 +20,7 @@ var states_map = {}
 
 var states_stack = []
 var current_state = null
-var _active = false setget set_active
+var _active = false setget set_active, get_active
 
 func _ready():
 	for child in get_children():
@@ -40,6 +40,9 @@ func set_active(value):
 	if not _active:
 		states_stack = []
 		current_state = null
+		
+func get_active():
+	return _active
 
 func _input(event):
 	current_state.handle_input(event)

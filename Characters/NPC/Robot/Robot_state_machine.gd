@@ -1,9 +1,11 @@
 extends "../NPC_state_machine.gd"
 
 func _ready():
+	set_active(false)
+	
 	states_map = {
 		"idle": $Idle,
-		#"move": $Move,
+		"move": $Move,
 		#"jump": $Jump,
 		#"stagger": $Stagger,
 		#"attack": $Attack

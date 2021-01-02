@@ -16,7 +16,7 @@ func update_scene_node(path):
 func change_level(level):
 	$TopLabels/HBoxContainer/Level.text = "Level " + str(Globals.level_num) + ": " + str(level)
 	
-func _process(delta):
+func _process(_delta):
 	# Check if dialog playing i.e. its processing is paused. If it is, pause the progress bar too
 	var dialog_node = get_node("Dialog")
 	var progress = get_node("TopLabels/HBoxContainer/OxygenCounter/TextureProgress")

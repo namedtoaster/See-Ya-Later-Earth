@@ -7,7 +7,7 @@ export var move_speed = 200
 func _ready():
 	set_process(true)
 
-func _process(delta):
+func _process(_delta):
 	if attaching:
 		_go_to_mouse()
 		

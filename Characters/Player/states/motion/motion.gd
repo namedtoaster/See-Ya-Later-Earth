@@ -1,6 +1,9 @@
 # Collection of important methods to handle direction and animation
 extends "../state.gd"
 
+export(float) var MAX_WALK_SPEED = 200
+export(float) var MAX_RUN_SPEED = 300
+
 func handle_input(event):
 	if event.is_action_pressed("simulate_damage"):
 		emit_signal("finished", "stagger")

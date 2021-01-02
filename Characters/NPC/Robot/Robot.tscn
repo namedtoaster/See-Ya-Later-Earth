@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Characters/NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/NPC/Robot/assets/$Robot_Suit.png" type="Texture" id=2]
-[ext_resource path="res://Characters/NPC/Robot/Robot.gd" type="Script" id=3]
+[ext_resource path="res://Characters/NPC/Robot/Robot_state_machine.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -21,6 +21,11 @@ tracks/0/keys = {
 }
 
 [node name="Robot" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 0
+dialog_color = Color( 0, 0, 0, 1 )
+
+[node name="StateMachine" parent="." index="0"]
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="1"]
@@ -31,3 +36,13 @@ frame = 0
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/idle = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="3"]
+visible = true
+
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
+process_mode = 0
+limit_left = 0
+limit_top = 0
+smoothing_enabled = true
+smoothing_speed = 2.0

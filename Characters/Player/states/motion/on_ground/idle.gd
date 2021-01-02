@@ -6,7 +6,7 @@ func enter():
 func handle_input(event):
 	return .handle_input(event)
 
-func update(delta):
+func update(_delta):
 	var input_direction = get_input_direction()
 	if input_direction and !Globals.edit_mode:
 		emit_signal("finished", "move")

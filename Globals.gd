@@ -5,6 +5,7 @@ extends Node
 var edit_mode = false
 var level_num = 0
 var player
+var robot
 # ------------------------------------------------------------------------------
 
 
@@ -44,11 +45,62 @@ func _ready():
 	# Assign player var
 	var current_scene = get_tree().get_current_scene()
 	player = current_scene.get_node("World/Player")
+	robot = current_scene.get_node("World/Robot")
 	
 func toggle_edit_mode():
 	edit_mode = !edit_mode
-# ------------------------------------------------------------------------------
 	
+func activate_player(value: bool):
+	var state = player.get_node("StateMachine")
+	if value:
+		state.initialize(state.START_STATE)
+		state._change_state("idle")
+		state.set_active(true)
+		
+		# Activate camera
+		player.get_node("Camera2D").current = true
+	else:
+		state._change_state("idle")
+		state.set_active(false)
+		
+		# Deactivate camera
+		player.get_node("Camera2D").current = false
+	
+func activate_robot(value: bool):
+	var state = robot.get_node("StateMachine")
+	if value:
+		state.initialize(state.START_STATE)
+		state._change_state("idle")
+		state.set_active(true)
+		
+		# Activate camera
+		robot.get_node("Camera2D").current = true
+	else:
+		state._change_state("idle")
+		state.set_active(false)
+		
+		# Deactivate camera
+		robot.get_node("Camera2D").current = false
+# ------------------------------------------------------------------------------
+
+
+# Input actions
+# ------------------------------------------------------------------------------
+func _input(event):
+	if event.is_action_pressed("switch_characters"):
+		if player.get_node("StateMachine").get_active():
+			# Deactivate the player
+			activate_player(false)
+			
+			# Activate robot 
+			activate_robot(true)
+		else:
+			# Activate the player
+			activate_player(true)
+			
+			# Deactivate robot 
+			activate_robot(false)
+# ------------------------------------------------------------------------------
 	
 # Level functions	
 # --------------------------------------------------------------------

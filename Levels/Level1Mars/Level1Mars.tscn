@@ -121,6 +121,11 @@ position = Vector2( -2.37427, -10.5149 )
 limit_right = 6145
 limit_bottom = 3130
 
+[node name="Spaceship" parent="World" index="3" instance=ExtResource( 6 )]
+position = Vector2( 5824.05, 290.95 )
+
+[node name="TetherEndTest" parent="World" index="4" instance=ExtResource( 2 )]
+
 [node name="Hypercores" type="Node2D" parent="World/Items" index="0"]
 
 [node name="Hypercore" parent="World/Items/Hypercores" index="0" instance=ExtResource( 5 )]
@@ -158,11 +163,8 @@ anims/fade_away = SubResource( 6 )
 position = Vector2( 5936.73, 887.987 )
 item_name = "oxy"
 
-[node name="Tethers" type="Node2D" parent="World/Items" index="2"]
-
-[node name="ShipTether" parent="World/Items/Tethers" index="0" instance=ExtResource( 7 )]
+[node name="ShipTether" parent="World/Items/Tethers" index="0"]
 position = Vector2( 5612.64, 368.117 )
-tether_name = "Ship Tether"
 
 [node name="Tether" parent="World/Items/Tethers" index="1" instance=ExtResource( 7 )]
 position = Vector2( 5396.75, 368.117 )
@@ -178,11 +180,6 @@ position = Vector2( 4756.49, 368.117 )
 
 [node name="Tether5" parent="World/Items/Tethers" index="5" instance=ExtResource( 7 )]
 position = Vector2( 4542.94, 368.117 )
-
-[node name="Spaceship" parent="World" index="3" instance=ExtResource( 6 )]
-position = Vector2( 5824.05, 290.95 )
-
-[node name="TetherEndTest" parent="World" index="4" instance=ExtResource( 2 )]
 
 [node name="Land" parent="Dialogs" index="0" instance=ExtResource( 9 )]
 position = Vector2( 5815.64, 529.765 )
