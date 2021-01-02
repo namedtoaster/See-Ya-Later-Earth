@@ -5,11 +5,21 @@ var TetherEndTex = preload("res://Other/Objects/Tether/DynamicTether/tether_end.
 
 var EndPoint
 var player
+var load_data = []
 export(int)var num_links = 1
 export(String)var tether_name = "Tether"
 onready var current_point = $Anchor/RopeLink/TetherPoint
+onready var SAVE_KEY: String = "tether_" + name
 
 func _ready():
+	# See if any tethers can be loaded for the current level
+	var current_level = get_tree().get_current_scene()
+	var level_name = current_level.name
+	var level_num = str(current_level.level_num)
+	var load_tethers = current_level.load_edited_tethers
+	if load_tethers:
+		GameSaver.load(1, level_num)
+	
 	# Get rid of the DetectPlayer node on the first TetherPoint
 	current_point.get_node("DetectPlayer").queue_free()
 	
@@ -19,7 +29,10 @@ func _ready():
 	for i in range(1, num_links):
 		# Create a new rope point and link it as appropriate
 		var new_child = TetherPoint.instance()
-		new_child.position.y = (i- 1) * 5
+		if load_data != []:
+			new_child.position = load_data[i]
+		else:
+			new_child.position.y = (i- 1) * 5
 		
 		var pin_joint = current_point.get_node("Joint")
 		pin_joint.node_a = current_point.get_path()
@@ -69,7 +82,23 @@ func _leaving_hit(body):
 func _hit(body):
 	if body.name == "Player":
 		new_tether(true)
-			
+		
+func save(save_game: Resource):
+	# Get the position of all the tether links
+	var position_data = []
+	
+	for child_link in $Anchor/RopeLink.get_children():
+		position_data.append(child_link.position)
+		
+	save_game.data[SAVE_KEY] = {
+		'position_data': position_data
+	}
+	
+func load(save_game: Resource):
+	if SAVE_KEY != null:
+		var data: Dictionary = save_game.data[SAVE_KEY]
+		load_data = data['position_data']
+				
 func new_tether(popup):
 	# Display popup to ask if user wants to attach			
 	if popup:

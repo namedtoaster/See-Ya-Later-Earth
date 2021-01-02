@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Levels/Level4.Asteroids/Level4.Asteroids.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Level4Asteroids/Level4Asteroids.gd" type="Script" id=1]
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=2]
+
+
 
 [node name="Level4Asteroids" instance=ExtResource( 2 )]
 script = ExtResource( 1 )

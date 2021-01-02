@@ -27,6 +27,9 @@ const DEFAULT_OXY_RATE = 1
 export(bool) var oxy_status
 export(int) var oxy_depletion_rate = DEFAULT_OXY_RATE
 
+# Debug variables
+export(bool) var load_edited_tethers = false
+
 func _ready():
 	Globals.update_level_num(level_num)
 	$GUI.change_level(level_name)

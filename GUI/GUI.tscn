@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/images/menus/GUI Interface Kit Free/PNG/GUI-Kit-Pack-Free_35.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/default_font.tres" type="DynamicFont" id=10]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 
@@ -29,8 +29,7 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="Animation" id=1]
-resource_name = "death_fade_in"
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("DeathLabel:modulate")
 tracks/0/interp = 1
@@ -44,8 +43,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "level_fade_in"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -59,8 +57,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "level_fade_out"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -152,7 +149,7 @@ margin_left = -100.0
 margin_top = -100.0
 margin_right = 100.0
 margin_bottom = 100.0
-script = SubResource( 4 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -195,6 +192,21 @@ margin_right = 100.0
 margin_bottom = 84.0
 text = "Quit"
 
+[node name="FileDialog" type="FileDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -324.5
+margin_top = -170.5
+margin_right = 324.5
+margin_bottom = 170.5
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DeathLabel" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
@@ -209,9 +221,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death_fade_in = SubResource( 1 )
-anims/level_fade_in = SubResource( 2 )
-anims/level_fade_out = SubResource( 3 )
+anims/death_fade_in = SubResource( 2 )
+anims/level_fade_in = SubResource( 3 )
+anims/level_fade_out = SubResource( 4 )
 
 [node name="Timers" type="Node2D" parent="."]
 
@@ -228,11 +240,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BottomMenu" type="MarginContainer" parent="."]
+[node name="BottomMenu" type="HBoxContainer" parent="."]
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -182.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomLeftMenu" type="MarginContainer" parent="BottomMenu"]
 margin_right = 185.0
+margin_bottom = 182.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -241,20 +260,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BottomMenu"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="BottomMenu/BottomLeftMenu"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 175.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 165, 125 )
 
-[node name="Keys" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
+[node name="Keys" type="VBoxContainer" parent="BottomMenu/BottomLeftMenu/VBoxContainer2"]
 margin_right = 165.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 165, 88 )
 alignment = 1
 
-[node name="LeftRight" type="HBoxContainer" parent="BottomMenu/VBoxContainer2/Keys"]
+[node name="LeftRight" type="HBoxContainer" parent="BottomMenu/BottomLeftMenu/VBoxContainer2/Keys"]
 margin_right = 165.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 165, 58 )
@@ -262,7 +281,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Left" type="TextureRect" parent="BottomMenu/VBoxContainer2/Keys/LeftRight"]
+[node name="Left" type="TextureRect" parent="BottomMenu/BottomLeftMenu/VBoxContainer2/Keys/LeftRight"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 80.0
 margin_bottom = 58.0
@@ -270,7 +289,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 4 )
 stretch_mode = 4
 
-[node name="Right" type="TextureRect" parent="BottomMenu/VBoxContainer2/Keys/LeftRight"]
+[node name="Right" type="TextureRect" parent="BottomMenu/BottomLeftMenu/VBoxContainer2/Keys/LeftRight"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 84.0
 margin_right = 165.0
@@ -279,7 +298,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 5 )
 stretch_mode = 4
 
-[node name="Spacebar" type="TextureRect" parent="BottomMenu/VBoxContainer2/Keys"]
+[node name="Spacebar" type="TextureRect" parent="BottomMenu/BottomLeftMenu/VBoxContainer2/Keys"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 62.0
 margin_right = 165.0
@@ -288,13 +307,13 @@ rect_min_size = Vector2( 165, 26 )
 texture = ExtResource( 3 )
 stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/BottomLeftMenu/VBoxContainer2"]
 margin_top = 92.0
 margin_right = 165.0
 margin_bottom = 162.0
 custom_constants/separation = 5
 
-[node name="EditMode" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+[node name="EditMode" type="Button" parent="BottomMenu/BottomLeftMenu/VBoxContainer2/VBoxContainer"]
 margin_right = 165.0
 margin_bottom = 20.0
 focus_mode = 0
@@ -304,7 +323,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Inventory" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+[node name="Inventory" type="Button" parent="BottomMenu/BottomLeftMenu/VBoxContainer2/VBoxContainer"]
 margin_top = 25.0
 margin_right = 165.0
 margin_bottom = 45.0
@@ -315,11 +334,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Log" type="Button" parent="BottomMenu/VBoxContainer2/VBoxContainer"]
+[node name="Log" type="Button" parent="BottomMenu/BottomLeftMenu/VBoxContainer2/VBoxContainer"]
 margin_top = 50.0
 margin_right = 165.0
 margin_bottom = 70.0
 text = "Log"
+
+[node name="BottomRestMenu" type="MarginContainer" parent="BottomMenu"]
+margin_left = 189.0
+margin_top = 162.0
+margin_right = 1024.0
+margin_bottom = 182.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="SaveData" type="HBoxContainer" parent="BottomMenu/BottomRestMenu"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 825.0
+margin_bottom = 30.0
+
+[node name="Checkboxes" type="VBoxContainer" parent="BottomMenu/BottomRestMenu/SaveData"]
+margin_bottom = 20.0
+
+[node name="Textboxes" type="VBoxContainer" parent="BottomMenu/BottomRestMenu/SaveData"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 20.0
+alignment = 2
+
+[node name="SaveButton" type="Button" parent="BottomMenu/BottomRestMenu/SaveData"]
+margin_left = 8.0
+margin_right = 108.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+text = "SAVE"
 
 [node name="Inventory" type="Control" parent="."]
 anchor_left = 0.5
@@ -377,8 +431,10 @@ margin_right = 200.0
 margin_bottom = 180.0
 text = "Go Back"
 [connection signal="value_changed" from="TopLabels/HBoxContainer/OxygenCounter/TextureProgress" to="." method="_on_TextureProgress_value_changed"]
+[connection signal="confirmed" from="FileDialog" to="." method="_on_FileDialog_confirmed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timers/RestartTimer" to="." method="_on_RestartTimer_timeout"]
-[connection signal="pressed" from="BottomMenu/VBoxContainer2/VBoxContainer/EditMode" to="." method="_on_EditMode_pressed"]
-[connection signal="pressed" from="BottomMenu/VBoxContainer2/VBoxContainer/Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="BottomMenu/BottomLeftMenu/VBoxContainer2/VBoxContainer/EditMode" to="." method="_on_EditMode_pressed"]
+[connection signal="pressed" from="BottomMenu/BottomLeftMenu/VBoxContainer2/VBoxContainer/Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="BottomMenu/BottomRestMenu/SaveData/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="Inventory/VBoxContainer/Resume" to="." method="_on_Button_pressed"]

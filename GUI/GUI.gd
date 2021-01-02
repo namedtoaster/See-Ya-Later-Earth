@@ -4,6 +4,7 @@ var current_scene_change_node
 const Item = preload("res://GUI/Item.tscn")
 
 func _ready():
+	# Hide/unhide different elements
 	$ColorRect.visible = true
 	
 	$Inventory/VBoxContainer/Items.text = ""
@@ -53,7 +54,10 @@ func toggle_inventory():
 	$Inventory.visible = !$Inventory.visible
 	
 func toggle_pause():
-	$PauseMenu.visible = !$PauseMenu.visible
+	$PauseMenu.visible = !$PauseMenu.visible 
+	
+func toggle_edit():
+	$BottomMenu/BottomRestMenu/SaveData.visible = !$BottomMenu/BottomRestMenu/SaveData.visible
 	
 	
 func _input(event):
@@ -98,9 +102,22 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_Inventory_pressed():
 	toggle_inventory()
 
-func _on_Button_pressed():
-	toggle_inventory()
-
 func _on_EditMode_pressed():
 	Globals.toggle_edit_mode()
 	get_tree().get_current_scene().toggle_tether_editor()
+	toggle_edit()
+
+
+func _on_EditSaveButton_pressed():
+	if !$FileDialog.visible:
+		$FileDialog.popup()
+
+
+func _on_FileDialog_confirmed():
+	$BottomMenu/BottomRestMenu/SaveData/Textboxes/SaveLocation/Value/Location.text = $FileDialog.current_file
+
+
+func _on_SaveButton_pressed():
+	var current_level = get_tree().get_current_scene()
+	var level_num = str(current_level.level_num)
+	GameSaver.save(1, level_num)

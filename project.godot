@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/NPC/Robot/Robot.gd"
 }, {
+"base": "Resource",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://SaveData/SaveGame.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "TetherAttach",
 "language": "GDScript",
@@ -63,18 +68,21 @@ _global_script_class_icons={
 "NPC": "",
 "OxyDepletion": "",
 "Robot": "",
+"SaveGame": "",
 "TetherAttach": ""
 }
 
 [application]
 
 config/name="See Ya Later Earth"
-run/main_scene="res://Levels/Level1.Mars/Level1.Mars.tscn"
+run/main_scene="res://Levels/Level1Mars/Level1Mars.tscn"
 config/icon="res://icon.png"
+config/version="0.1.0"
 
 [autoload]
 
 Globals="*res://Globals.gd"
+GameSaver="*res://SaveData/GameSaver.gd"
 
 [display]
 

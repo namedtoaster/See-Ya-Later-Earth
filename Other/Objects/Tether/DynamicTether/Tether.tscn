@@ -7,7 +7,9 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.3041
 
-[node name="Rope" type="Node2D"]
+[node name="Rope" type="Node2D" groups=[
+"level_edit_save",
+]]
 script = ExtResource( 4 )
 num_links = 50
 
