@@ -98,12 +98,10 @@ margin_left = 40.0
 margin_top = 11.4956
 margin_right = 100.0
 margin_bottom = 25.4956
-text = "Attach (E)"
+text = "Attach (Ctrl)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="CanvasLayer" type="CanvasLayer" parent="BodyPivot"]
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4.18219 )

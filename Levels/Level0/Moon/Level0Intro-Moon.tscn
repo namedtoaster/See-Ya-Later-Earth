@@ -32,7 +32,7 @@ tile_data = PoolIntArray( -327684, 4, 0, -327683, 4, 0, -327682, 4, 0, -327681, 
 position = Vector2( 959.264, 480.747 )
 
 [node name="Robot" parent="World" index="2"]
-position = Vector2( 685.427, 578.16 )
+position = Vector2( 997.427, 371.16 )
 
 [node name="Fences" type="Node2D" parent="World" index="3"]
 

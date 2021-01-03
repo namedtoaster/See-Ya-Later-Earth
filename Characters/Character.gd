@@ -1,6 +1,9 @@
 class_name Character
 extends KinematicBody2D
 
+var attached = false
+var can_attach = false
+
 # Both the Player and Enemy inherit this scene as they have shared behaviours
 # such as speed and are affected by gravity.
 
@@ -25,6 +28,8 @@ func take_damage(attacker, amount, effect=null):
 		return
 	$States/Stagger.knockback_direction = (attacker.global_position - global_position).normalized()
 	$Health.take_damage(amount, effect)
+
+func get_class(): return "Character"
 
 func set_dead(value):
 	set_process_input(not value)

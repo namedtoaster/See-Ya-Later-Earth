@@ -46,3 +46,29 @@ limit_left = 0
 limit_top = 0
 smoothing_enabled = true
 smoothing_speed = 2.0
+
+[node name="PopupLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="Popup" type="Popup" parent="PopupLayer" index="0"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PopupLayer/Popup" index="0"]
+margin_left = 40.0
+margin_top = 11.4956
+margin_right = 100.0
+margin_bottom = 25.4956
+text = "Pick Up (Ctrl)"
+__meta__ = {
+"_edit_use_anchors_": false
+}

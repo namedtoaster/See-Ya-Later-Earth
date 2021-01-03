@@ -15,7 +15,6 @@ onready var SAVE_KEY: String = "tether_" + name
 func _ready():
 	# See if any tethers can be loaded for the current level
 	var current_level = get_tree().get_current_scene()
-	var level_name = current_level.name
 	var level_num = str(current_level.level_num)
 	var load_tethers = current_level.load_edited_tethers
 	if load_tethers:
@@ -30,6 +29,8 @@ func _ready():
 	for i in range(1, num_links):
 		# Create a new rope point and link it as appropriate
 		var new_child = TetherPoint.instance()
+		
+		# If level edit data has been loaded, set the tethers accordingly
 		if load_position_data != [] and load_rotation_data != []:
 			new_child.position = load_position_data[i]
 			new_child.rotation = load_rotation_data[i]
@@ -68,22 +69,21 @@ func _ready():
 		Globals.old_tether = EndPoint
 		Globals.old_tether_area = $Area2D
 		
-		# Also, enable the area collision
-		$Area2D/CollisionPolygon2D.set_deferred("disabled", false)
+		# Also, enable the area collision just for Jet
+		$Area2D.set_collision_mask(1)
 		
 	# Set the scale of the area collision based on how many links there are
 	$Area2D.scale = Vector2(1.0 * num_links / 35, 1.0 * num_links / 35)
 		
 func _leaving_hit(body):
-	var TetherAttach = get_tree().get_current_scene().get_node("Other/TetherAttach")
-	if body.name == "Player" and !TetherAttach.attaching:
-		body._close_popup()
-		body.can_attach = false
-		Globals.reset_tether_and_area()
+	if body.name == Globals.current_player.name:
+		Globals.leave_object("TetherAttach")
 
 func _hit(body):
-	if body.name == "Player":
-		new_tether(true)
+	if body.name == Globals.current_player.name:
+		Globals.perspective_tether = EndPoint
+		Globals.perspective_tether_area = $Area2D
+		Globals.interact("TetherAttach")
 		
 func save(save_game: Resource):
 	# Get the position of all the tether links
@@ -100,17 +100,7 @@ func save(save_game: Resource):
 	}
 	
 func load(save_game: Resource):
-	if SAVE_KEY != null:
+	if save_game.data.has(SAVE_KEY):
 		var data: Dictionary = save_game.data[SAVE_KEY]
 		load_position_data = data['position_data']
 		load_rotation_data = data['rotation_data']
-				
-func new_tether(popup):
-	# Display popup to ask if user wants to attach			
-	if popup:
-		Globals.player._attach_popup()
-	Globals.player.can_attach = true
-		
-	if EndPoint.get_node("Joint").node_b != player.get_path():
-		Globals.tether = EndPoint
-		Globals.tether_area = $Area2D

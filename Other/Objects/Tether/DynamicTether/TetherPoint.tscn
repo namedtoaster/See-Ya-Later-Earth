@@ -32,6 +32,7 @@ bias = 0.9
 
 [node name="DetectPlayer" type="Area2D" parent="."]
 collision_layer = 131072
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayer"]
 shape = SubResource( 2 )
