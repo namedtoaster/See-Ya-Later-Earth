@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [node name="Robot" instance=ExtResource( 1 )]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 16384
 dialog_color = Color( 0, 0, 0, 1 )
 
 [node name="StateMachine" parent="." index="0"]

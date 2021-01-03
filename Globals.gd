@@ -220,7 +220,6 @@ func attach():
 		old_tether_area.set_collision_mask_bit(0, false)
 	
 func finish_attach():
-	print(tether == old_tether)
 	if old_bot_tether != null and current_player.name == "Robot":
 		# Enable the detect player area on the end point
 		old_bot_tether.get_node("DetectPlayer/CollisionShape2D").set_deferred("disabled", false)

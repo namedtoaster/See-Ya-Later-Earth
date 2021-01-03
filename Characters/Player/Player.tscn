@@ -44,7 +44,7 @@ tracks/0/keys = {
 extents = Vector2( 7.64197, 4.71533 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 2147483648
+collision_mask = 2147500032
 script = ExtResource( 2 )
 dialog_color = Color( 0.0509804, 0.458824, 0.247059, 1 )
 
