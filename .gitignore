@@ -1,7 +1,11 @@
-# Import cache
+# Cache folders
 .import/
+.godot/
 
 # Binaries
 bin/
 build/
 lib/
+
+# Mac
+**/.DS_Store

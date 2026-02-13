@@ -1,8 +1,0 @@
-res://scenes/tether/tether_rope.gd
-res://scenes/tether/tether_system.gd
-res://scenes/level/test_level.gd
-res://scenes/player/player.gd
-res://scenes/player/states/move.gd
-res://scenes/tether/tether_post.gd
-res://resources/oxygen_data.gd
-res://resources/oxygen_data.tres
