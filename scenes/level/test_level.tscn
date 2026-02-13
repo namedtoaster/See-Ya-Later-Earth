@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://btest_level01"]
+
+[ext_resource type="Script" path="res://scenes/level/test_level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/gui/hud.tscn" id="3_hud"]
+[ext_resource type="Script" path="res://scenes/tether/tether_system.gd" id="4_tether_sys"]
+[ext_resource type="PackedScene" path="res://scenes/tether/tether_post.tscn" id="5_post"]
+[ext_resource type="PackedScene" path="res://scenes/tether/tether_rope.tscn" id="6_rope"]
+[ext_resource type="PackedScene" path="res://scenes/level/level_goal.tscn" id="7_goal"]
+[ext_resource type="Resource" path="res://resources/oxygen_data.tres" id="8_oxygen"]
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("1_level")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 1500.0
+offset_bottom = 1500.0
+color = Color(0.12, 0.12, 0.18, 1)
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 800.0
+offset_bottom = 600.0
+color = Color(0.2, 0.25, 0.2, 1)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(50, 200)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(50, 200)
+oxygen_data = ExtResource("8_oxygen")
+
+[node name="Posts" type="Node2D" parent="."]
+
+[node name="Post1" parent="Posts" instance=ExtResource("5_post")]
+position = Vector2(50, 200)
+tether_range = 200.0
+
+[node name="Post2" parent="Posts" instance=ExtResource("5_post")]
+position = Vector2(200, 150)
+tether_range = 220.0
+
+[node name="Post3" parent="Posts" instance=ExtResource("5_post")]
+position = Vector2(350, 220)
+tether_range = 200.0
+
+[node name="Post4" parent="Posts" instance=ExtResource("5_post")]
+position = Vector2(480, 140)
+tether_range = 220.0
+
+[node name="Post5" parent="Posts" instance=ExtResource("5_post")]
+position = Vector2(600, 250)
+tether_range = 200.0
+
+[node name="TetherSystem" type="Node" parent="."]
+script = ExtResource("4_tether_sys")
+player_path = NodePath("../Player")
+tether_rope_scene = ExtResource("6_rope")
+
+[node name="LevelGoal" parent="." instance=ExtResource("7_goal")]
+position = Vector2(650, 250)
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]

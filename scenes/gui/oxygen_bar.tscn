@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://boxygen_bar01"]
+
+[ext_resource type="Script" path="res://scenes/gui/oxygen_bar.gd" id="1_obar"]
+
+[node name="OxygenBar" type="HBoxContainer"]
+script = ExtResource("1_obar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(120, 16)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+text = "O2: 100%"

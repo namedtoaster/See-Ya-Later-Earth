@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://btether_post01"]
+
+[ext_resource type="Script" path="res://scenes/tether/tether_post.gd" id="1_post"]
+[ext_resource type="Script" path="res://scenes/tether/range_indicator.gd" id="2_range"]
+
+[node name="TetherPost" type="Node2D" groups=["tether_posts"]]
+script = ExtResource("1_post")
+
+[node name="RangeIndicator" type="Node2D" parent="."]
+script = ExtResource("2_range")

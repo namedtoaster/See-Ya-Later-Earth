@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bplayer001"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scenes/player/states/player_state_machine.gd" id="2_statemachine"]
+[ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="3_idle"]
+[ext_resource type="Script" path="res://scenes/player/states/move.gd" id="4_move"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player.png" id="5_sprite"]
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 1.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_main"]
+_data = {
+"idle": SubResource("Animation_idle"),
+"walk": SubResource("Animation_walk")
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_player")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_statemachine")
+start_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_idle")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("4_move")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_main")
+}
+
+[node name="BodyPivot" type="Marker2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyPivot"]
+texture = ExtResource("5_sprite")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 5.0

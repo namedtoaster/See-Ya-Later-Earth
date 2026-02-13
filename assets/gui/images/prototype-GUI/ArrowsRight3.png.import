@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du1lxq0el38rx"
-path="res://.godot/imported/space_background.jpg-0fdafc1d7921eb3029c189ba893b85c5.ctex"
+uid="uid://diox0noh1bikt"
+path="res://.godot/imported/ArrowsRight3.png-494a422d1aa5bf3f9987a5a50c6904cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/space_background.jpg"
-dest_files=["res://.godot/imported/space_background.jpg-0fdafc1d7921eb3029c189ba893b85c5.ctex"]
+source_file="res://assets/gui/images/prototype-GUI/ArrowsRight3.png"
+dest_files=["res://.godot/imported/ArrowsRight3.png-494a422d1aa5bf3f9987a5a50c6904cd.ctex"]
 
 [params]
 

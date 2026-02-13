@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OxygenData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/oxygen_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+max_oxygen = 100.0
+depletion_rate_moving = 5.0
+burst_amount = 50.0
