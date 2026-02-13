@@ -19,6 +19,13 @@ var is_dead: bool = false
 ## Current movement velocity (used by tether system to cancel outward movement)
 var velocity: Vector2 = Vector2.ZERO
 
+## How far the camera peeks ahead of the player (in pixels)
+@export var camera_look_ahead: float = 60.0
+## How fast the camera offset catches up (higher = snappier)
+@export var camera_look_speed: float = 3.0
+
+@onready var camera: Camera2D = $Camera2D
+
 func _ready() -> void:
 	if oxygen_data:
 		current_oxygen = oxygen_data.max_oxygen
@@ -27,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 	_update_oxygen(delta)
+	_update_camera(delta)
 
 func _update_oxygen(delta: float) -> void:
 	if not oxygen_data:
@@ -41,6 +49,12 @@ func _update_oxygen(delta: float) -> void:
 	if current_oxygen <= 0.0 and not is_dead:
 		is_dead = true
 		oxygen_depleted.emit()
+
+func _update_camera(delta: float) -> void:
+	if not camera:
+		return
+	var target_offset := look_direction.normalized() * camera_look_ahead
+	camera.offset = camera.offset.lerp(target_offset, camera_look_speed * delta)
 
 ## Called when connecting to a post that has oxygen.
 func receive_oxygen(amount: float) -> void:
